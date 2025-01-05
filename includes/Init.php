@@ -46,7 +46,7 @@ if(!Config::get('defaults', 'debug'))
 }
 
 // Set Session In DB or Not. Default is In DB
-if(Option::get('dbsession') != 'yes'){
+if(Option::dbsession() != 'yes'){
     Session::session_in_db(false);
 }
 
