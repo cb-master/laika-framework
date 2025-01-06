@@ -14,7 +14,7 @@ defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 use CBM\Model\Model;
 use CBM\Core\Config;
 
-class Common
+class Factory
 {
     // Table Name
     private static string $table;
@@ -27,6 +27,12 @@ class Common
     {
         self::$table = $table;
         return new Static;
+    }
+
+    // Create UUID
+    public static function uuid():string
+    {
+        return Model::table(self::$table)->uuid();
     }
 
     // Single Factory Method
