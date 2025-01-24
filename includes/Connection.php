@@ -8,6 +8,8 @@
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
+use CBM\Core\Config\Config;
+
 ////////////////////////////////////////////
 ////////////////////////////////////////////
 
@@ -17,4 +19,4 @@ defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 ////////////////////////////////////////////
 
 // Initiate Databace Connection Config
-CBM\Model\Model::config(CBM\Core\Config::get('database'));
+CBM\Model\Model::config(Config::get('database'));

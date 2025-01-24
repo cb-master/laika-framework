@@ -12,6 +12,8 @@
 // Forbidden Access
 defined('CONSOLEPATH') || http_response_code(403).die('403 Forbidden Access!');
 
+use CBM\Core\Config\Config;
+
 // Get Database Configs
 $configs[basename(CONSOLEPATH.'/config/app.php', '.php')] = require(CONSOLEPATH.'/config/app.php');
 $configs[basename(CONSOLEPATH.'/config/database.php', '.php')] = require(CONSOLEPATH.'/config/database.php');
@@ -20,7 +22,7 @@ $configs[basename(CONSOLEPATH.'/config/database.php', '.php')] = require(CONSOLE
 require_once(CONSOLEPATH."/vendor/autoload.php");
 
 // Set Config Environments
-CBM\Core\Config::set($configs);
+Config::set($configs);
 
 // Get Db Connection File
-CBM\Model\Model::config(CBM\Core\Config::get('database'));
+CBM\Model\Model::config(Config::get('database'));

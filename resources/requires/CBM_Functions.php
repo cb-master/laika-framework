@@ -8,11 +8,12 @@
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
-use CBM\Core\Support\Convert;
-use CBM\Core\Filter;
-use CBM\Core\Option;
+use CBM\Core\Convert\Convert;
+use CBM\Core\Option\Option;
 use CBM\Session\Session;
-use CBM\Core\Helper;
+use CBM\Core\Filter\Filter;
+use CBM\Core\Helper\Helper;
+use CBM\Core\Uri\Uri;
 
 // Dump Data & Die
 function dd($data, bool $die = false):void
@@ -92,6 +93,15 @@ function localDateTime(?string $datetime)
     return $datetime ? date('Y-m-d\TH:i:s', strtotime($datetime)) : '0000-00-00T00:00:00';
 }
 
+// Get Slug
+/**
+ * @param int $index - Default is 0
+ */
+function slug(int $index):string
+{
+    return Uri::slug($index);
+}
+
 // Redirect
 /**
  * @param string $slug - Required Argument
@@ -102,25 +112,38 @@ function redirect(string $slug, int $response = 302):void
     Helper::redirect($slug, $response);
 }
 
+// Location
+/**
+ * @param string $slug - Required Argument
+ */
+function location(string $slug):string
+{
+    return Helper::location($slug);
+}
+
+// Same Url
+/**
+ * @param string $slug - Required Argument
+ */
+function sameUri():string
+{
+    $uri = Uri::app_uri();
+    $slugs = Uri::slugs();
+    foreach($slugs as $slug){
+        $uri .= "/{$slug}";
+    }
+    return $uri;
+}
+
 // Check Staff Has Access
 /**
  * @param string $access - Required Argument
  * @param string $for - Required Argument. Default is 'staff'
  */
-function access(string $access, string $for):bool
+function staffHasAccess(string $access):bool
 {
-    $accessList = json_decode(Session::get('access_list', $for));
-    return $accessList->$access ?? $accessList[$access] ?? false;
-}
-
-// Staff Has Permission "Comma Separated Value"
-function hasPermission(string $access, string $for, string $slug = '')
-{
-    if(!access(trim($access), $for))
-    {
-        Message::set('Permission Denied! Please Contact Administrator.', false);
-        Helper::redirect($slug);
-    }
+    $accessList = unserialize(Session::get('access', ADMIN));
+    return (isset($accessList[$access]) && $accessList[$access]) ? true : false;
 }
 
 // Add Filter
@@ -129,20 +152,21 @@ function add_filter(string $filter, callable $callback):void
     Filter::add_filter($filter, $callback);
 }
 
-// Add Filter
-function do_filter(string $filter, mixed ...$args):mixed
+// Apply Filter
+function do_filter(string $filter, callable $callback):mixed
 {
-    return Filter::do_filter($filter, ...$args);
+    return Filter::do_filter($filter, $callback);
 }
 
-// Add Filter
-function add_action(string $filter, callable $callback):void
+// Add Action
+function add_action(string $action, mixed ...$args):void
 {
-    Filter::add_action($filter, $callback);
+    Filter::add_action($action, ...$args);
 }
 
-// Add Filter
-function do_action(string $filter, mixed ...$args):mixed
+// Apply Action
+function do_action(string $action, mixed ...$args):mixed
 {
-    return Filter::do_action($filter, ...$args);
+    return Filter::do_action($action, ...$args);
 }
+
