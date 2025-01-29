@@ -8,10 +8,10 @@
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
-use CBM\Core\Support\Directory;
+use CBM\Core\Directory\Directory;
 use CBM\Core\Response\Response;
-use CBM\Core\Option;
-use CBM\Core\Config;
+use CBM\Core\Config\Config;
+use CBM\Core\Option\Option;
 use CBM\Session\Session;
 
 // Require Autoload
