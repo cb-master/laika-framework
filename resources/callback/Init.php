@@ -9,9 +9,9 @@
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
 use CBM\Core\Response\Response;
-use CBM\Core\Support\Directory;
+use CBM\Core\Directory\Directory;
 use CBM\Core\Request\Request;
-use CBM\Core\Config;
+use CBM\Core\Config\Config;
 use CBM\Model\Model;
 
 // Require Vendor File
@@ -55,7 +55,7 @@ if(!isset($_SERVER['Authorization'])){
 }
 
 // Request Deniy If is Not A Valid Admin Token
-$staff = Model::table('admins')->select('token')->filter('token', '=', $_SERVER['Authorization'])->get();
+$staff = Model::table('admins')->filter('token', '=', $_SERVER['Authorization'])->get('token');
 if(count($staff) !== 1){
     print(json_encode([
         'code'      =>  'AP401',

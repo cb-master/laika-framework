@@ -11,8 +11,8 @@ namespace CBM\App\Factory;
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
+use CBM\Core\Config\Config;
 use CBM\Model\Model;
-use CBM\Core\Config;
 
 class Factory
 {
@@ -43,7 +43,7 @@ class Factory
      */
     public function single(string $column, string $value, string $select = '*'):array|object
     {
-        return Model::table(self::$table)->select($select)->filter($column, '=', $value)->single();
+        return Model::table(self::$table)->filter($column, '=', $value)->single($select);
     }
 
     // Get All Factory Method
@@ -53,7 +53,7 @@ class Factory
      */
     public function get(array $where = [], string $select = '*'):array
     {
-        return Model::table(self::$table)->select($select)->where($where)->get();
+        return Model::table(self::$table)->where($where)->get($select);
     }
 
     // Get Filter Factory Method
@@ -64,7 +64,7 @@ class Factory
      */
     public function filter(array $where = [], bool $limit = false, string $select = '*'):array
     {
-        return $limit ? Model::table(self::$table)->select($select)->where($where)->limit(Config::get('app', 'limit'))->get() : Model::table(self::$table)->select($select)->where($where)->get();
+        return $limit ? Model::table(self::$table)->where($where)->limit(Config::get('app', 'limit'))->get($select) : Model::table(self::$table)->where($where)->get($select);
     }
 
     // Create Factory Method
