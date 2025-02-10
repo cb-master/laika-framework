@@ -11,7 +11,7 @@ namespace CBM\App;
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
-use CBM\CoreHelper\Error;
+use CBM\Handler\Error\Error;
 use CBM\Core\Uri\Uri;
 
 class Controller
