@@ -10,6 +10,7 @@ defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
 use CBM\Core\Directory\Directory;
 use CBM\Core\Response\Response;
+use \CBM\Handler\Error\Error;
 use CBM\Core\Config\Config;
 use CBM\Core\Option\Option;
 use CBM\Session\Session;
@@ -51,6 +52,6 @@ if(Option::dbsession() != 'yes'){
 }
 
 // Handling Errors
-set_error_handler('error_handler');
-set_exception_handler('exception_handler');
-register_shutdown_function('shutdown_handler');
+set_error_handler([Error::class, 'errorHandler']);
+set_exception_handler([Error::class, 'exceptionHandler']);
+register_shutdown_function([Error::class, 'shutdownHandler']);
