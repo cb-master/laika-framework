@@ -40,8 +40,12 @@ array_filter(Directory::files('resources/custom', 'php'), function($path){
 });
 
 // Display Error
-if(!Config::get('defaults', 'debug'))
+ini_set('display_errors', 0);
+ini_set('error_reporting', 0);
+Error::$display = false;
+if(Config::get('app', 'debug'))
 {
+    Error::$display = true;
     ini_set('display_errors', 1);
     ini_set('error_reporting', E_ALL);
 }
