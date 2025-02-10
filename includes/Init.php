@@ -21,7 +21,7 @@ require_once(ROOTPATH."/vendor/autoload.php");
 Response::header();
 
 // Require All Config Environment Files
-foreach(Directory::requires('config', 'php') as $path){
+foreach(Directory::files('config', 'php') as $path){
     $configs[basename($path, '.php')] = require($path);
 }
 // Set Config Environments
@@ -31,10 +31,10 @@ Config::set($configs);
 require_once(__DIR__.'/Connection.php');
 
 // Require Files
-array_filter(Directory::requires('resources/requires', 'php'), function($path){
+array_filter(Directory::files('resources/requires', 'php'), function($path){
     require($path);
 });
-array_filter(Directory::requires('resources/custom', 'php'), function($path){
+array_filter(Directory::files('resources/custom', 'php'), function($path){
     require($path);
 });
 
