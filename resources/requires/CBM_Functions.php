@@ -8,12 +8,10 @@
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
-use CBM\Core\Convert\Convert;
-use CBM\Core\Option\Option;
-use CBM\Session\Session;
 use CBM\Core\Filter\Filter;
+use CBM\Core\Option\Option;
 use CBM\Core\Helper\Helper;
-use CBM\Core\Uri\Uri;
+use CBM\Session\Session;
 
 // Dump Data & Die
 function dd($data, bool $die = false):void
@@ -33,43 +31,17 @@ function show($data, bool $die = false):void
     $die ? die() : $die;
 }
 
-// To JSON
-/**
- * @param mixed $property - Required Argument.
- * @param int $type - Default Value is JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT.
- */
-function toJson(array $array, $type = JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT):string
-{
-    return Convert::toJson($array, $type);
-}
-
-// To Array
-/**
- * @param mixed $property - Required Argument
- */
-function toArray(mixed $property):array
-{
-    return Convert::toArray($property);
-}
-
-// To Object
-/**
- * @param mixed $property - Required Argument
- */
-function toObject(mixed $property):object
-{
-    return Convert::toObject($property);
-}
-
 // Convert To Float Number
 /**
  * @param int|string|float|null $number - Required Argument
  * @param int|string $decimal - Default is 2
- * @param string $thousands_separator - Default is Blank String ''
  */
-function toDecinal(int|string|float|null $number, int|string $decimal = 2, string $thousands_separator = ''):string
+function to_decinal(int|string|float|null $number, int $decimal = 2):string
 {
-    return Convert::toDecinal($number, $decimal, $thousands_separator);
+    $number = (float) $number;
+    $thousands_separator = Option::thousands_separator();
+    $decimal_seperator = Option::decimal_separator();
+    return number_format($number, $decimal, $decimal_seperator, $thousands_separator);
 }
 
 // Convert to Price
@@ -78,29 +50,12 @@ function toDecinal(int|string|float|null $number, int|string $decimal = 2, strin
  * @param int|string $decimal - Default is 2
  * @return string
  */
-function toPrice(string|int|float $price = null, int $decimal = 2):string
+function to_price(string|int|float $price = null, int $decimal = 2):string
 {
-    $price = toDecinal($price, $decimal);
+    $price = to_decinal($price, $decimal);
     return Option::get('currencypfx') . $price;
 }
 
-// Local Date
-/**
- * @param string|null $date - Default is null
- */
-function localDateTime(?string $datetime)
-{
-    return $datetime ? date('Y-m-d\TH:i:s', strtotime($datetime)) : '0000-00-00T00:00:00';
-}
-
-// Get Slug
-/**
- * @param int $index - Default is 0
- */
-function slug(int $index):string
-{
-    return Uri::slug($index);
-}
 
 // Redirect
 /**
@@ -112,38 +67,15 @@ function redirect(string $slug, int $response = 302):void
     Helper::redirect($slug, $response);
 }
 
-// Location
-/**
- * @param string $slug - Required Argument
- */
-function location(string $slug):string
-{
-    return Helper::location($slug);
-}
-
-// Same Url
-/**
- * @param string $slug - Required Argument
- */
-function sameUri():string
-{
-    $uri = Uri::app_uri();
-    $slugs = Uri::slugs();
-    foreach($slugs as $slug){
-        $uri .= "/{$slug}";
-    }
-    return $uri;
-}
-
 // Check Staff Has Access
 /**
  * @param string $access - Required Argument
  * @param string $for - Required Argument. Default is 'staff'
  */
-function staffHasAccess(string $access):bool
+function access(string $access, string $for):bool
 {
-    $accessList = unserialize(Session::get('access', ADMIN));
-    return (isset($accessList[$access]) && $accessList[$access]) ? true : false;
+    $accessList = json_decode(Session::get('access_list', $for));
+    return $accessList->$access ?? $accessList[$access] ?? false;
 }
 
 // Add Filter
@@ -152,21 +84,20 @@ function add_filter(string $filter, callable $callback):void
     Filter::add_filter($filter, $callback);
 }
 
-// Apply Filter
-function do_filter(string $filter, callable $callback):mixed
+// Add Filter
+function do_filter(string $filter, mixed ...$args):mixed
 {
-    return Filter::do_filter($filter, $callback);
+    return Filter::do_filter($filter, ...$args);
 }
 
-// Add Action
-function add_action(string $action, mixed ...$args):void
+// Add Filter
+function add_action(string $filter, callable $callback):void
 {
-    Filter::add_action($action, ...$args);
+    Filter::add_action($filter, $callback);
 }
 
-// Apply Action
-function do_action(string $action, mixed ...$args):mixed
+// Add Filter
+function do_action(string $filter, mixed ...$args):mixed
 {
-    return Filter::do_action($action, ...$args);
+    return Filter::do_action($filter, ...$args);
 }
-

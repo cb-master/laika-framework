@@ -15,8 +15,8 @@ defined('CONSOLEPATH') || http_response_code(403).die('403 Forbidden Access!');
 use CBM\Core\Config\Config;
 
 // Get Database Configs
-$configs[basename(CONSOLEPATH.'/config/app.php', '.php')] = require(CONSOLEPATH.'/config/app.php');
-$configs[basename(CONSOLEPATH.'/config/database.php', '.php')] = require(CONSOLEPATH.'/config/database.php');
+$configs[basename(CONSOLEPATH.'/system/app.php', '.php')] = require(CONSOLEPATH.'/system/app.php');
+$configs[basename(CONSOLEPATH.'/system/database.php', '.php')] = require(CONSOLEPATH.'/system/database.php');
 
 // Require Autoload
 require_once(CONSOLEPATH."/vendor/autoload.php");

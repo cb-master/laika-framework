@@ -12,14 +12,20 @@ namespace CBM\App\Controller;
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
 use CBM\App\Controller;
+use Template;
 
 class Sample Extends Controller
 {
+    // {class} Page;
     public function index()
     {
-        $data['title'] = Sample Controller Page';
-        echo "This is {class} Page";
-        // $this->middleware('class', 'method', []);
-        // $this->view('viewfile', $data);
+        // Middleware If Required
+        // $this->middleware($class, $method, $args = []);
+
+        // Assign Title
+        Template::assign('title', 'Sample Controller Page');
+
+        // Load View File
+        Template::display('file_name');
     }
 }

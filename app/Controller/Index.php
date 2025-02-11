@@ -12,6 +12,7 @@ namespace CBM\App\Controller;
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
 use CBM\App\Controller;
+use Template;
 
 /**
 * class Index Extends Controller
@@ -32,7 +33,7 @@ class Index Extends Controller
 {
     public function index()
     {
-        $data['title'] = 'Laika Home Page';
-        $this->view('index', $data);
+        Template::assign('title', 'Laika Home Page Cached');
+        $this->view('index');
     }
 }

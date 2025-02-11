@@ -11,8 +11,9 @@ namespace CBM\App;
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
-use CBM\Handler\Error\Error;
+use CBM\Core\Option\Option;
 use CBM\Core\Uri\Uri;
+use Template;
 
 class Controller
 {
@@ -20,6 +21,7 @@ class Controller
     /**
      * @param string $class - Required Argument as Middleware Class Name Like 'Client'.
      * @param string $method - Required Argument as Middleware Method Name.
+     * @param array $args - Optionsl Argument. Default is Blank Array.
      */
     protected function middleware(string $class, string $method, array $args = []):void
     {
@@ -29,33 +31,56 @@ class Controller
         }
         // Load Middleware if Exist
         $class = "\\CBM\\App\\Middleware\\{$class}";
-        if(class_exists($class) && (method_exists($class, $method))){
-            call_user_func([new $class, $method], $args);
-        }
+        call_user_func([$class, $method], $args);
     }
 
     // Load View
     /**
      * @param string $view - Required Argument as view file
-     * @param array $data - Required Argument as datas to pass array keys as variable in view file
-     * @param string $for - Default is null to load Front View. For Backend like admin or panel use constant ADMIN or other custom CONSTANTS as string
      */
-    protected function view(string $view, array $data = []):void
+    protected function view(string $view):void
     {
-        // Extract Data to the View
-        extract($data);
-
-        // Get Theme Directory
-        $path = Uri::path(ROOTPATH . "/views/");
-
         // Theme File
-        $view = ROOTPATH . "/views/{$view}.php";
-
-        if(!file_exists($view)){
-            throw new Error("{$view} File Does Not Exist", 80000);
-        }
+        $view = ROOTPATH . "/views/{$view}.tpl";
         
+        // Config Smarty Template
+        $template = $this->template();
+        Template::setTemplateDir($template['dir']);
+        Template::setCompileDir($template['compile']);
+        Template::setConfigDir($template['config']);
+        Template::setCacheDir($template['cache']);
+        Template::setCaching(Option::template_caching());
+        Template::setCacheLifetime(Option::template_cache_lifetime());
+        Template::assign('webhost', Uri::app_uri());
+        // Register Functions
+        $funcs = get_defined_functions()['user'];
+        foreach($funcs as $func){
+            Template::registerFunction($func, $func);
+        }
         // Load View File
-        require_once($view);
+        Template::display($view);
+        // require_once($view);
+    }
+
+    // Template Directory
+    private function template():array
+    {
+        global $template;
+        $template = ROOTPATH.'/'.trim($template, '/');
+        $dir['dir'] = "{$template}/dir/";
+        $dir['compile'] = "{$template}/compile/";
+        $dir['config'] = "{$template}/config/";
+        $dir['cache'] = "{$template}/cache/";
+        // Create Directories if Not Exist
+        if(!file_exists($template)){
+            mkdir($template);
+            file_put_contents("{$template}/.htaccess", "### Deny Browsing This Directory\ndeny from all");
+        }
+        foreach($dir as $path){
+            if(!file_exists($path)){
+                mkdir($path);
+            }
+        }
+        return $dir;
     }
 }

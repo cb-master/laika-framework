@@ -15,14 +15,16 @@ use CBM\Core\Config\Config;
 use CBM\Core\Option\Option;
 use CBM\Session\Session;
 
+// Require Config
+require_once(__DIR__."/../config.php");
 // Require Autoload
-require_once(ROOTPATH."/vendor/autoload.php");
+require_once(__DIR__."/../vendor/autoload.php");
 
 // Set Response Headers
 Response::header();
 
 // Require All Config Environment Files
-foreach(Directory::files('config', 'php') as $path){
+foreach(Directory::files('system', 'php') as $path){
     $configs[basename($path, '.php')] = require($path);
 }
 // Set Config Environments
