@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-02-11 19:24:17
+/* Smarty version 5.4.3, created on 2025-02-11 21:39:07
   from 'file:C:\xampp\htdocs\cbm-laika/views/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_67ab95d165d1f0_09353495',
+  'unifunc' => 'content_67abb56b682da8_05258334',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_67ab95d165d1f0_09353495 (\Smarty\Template $_smarty_tpl) {
+function content_67abb56b682da8_05258334 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\cbm-laika\\views';
 ?><!DOCTYPE html>
 <html lang="en">

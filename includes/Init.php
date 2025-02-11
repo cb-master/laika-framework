@@ -14,6 +14,7 @@ use \CBM\Handler\Error\Error;
 use CBM\Core\Config\Config;
 use CBM\Core\Option\Option;
 use CBM\Session\Session;
+use CBM\Core\Date\Date;
 
 // Require Config
 require_once(__DIR__."/../config.php");
@@ -32,6 +33,9 @@ Config::set($configs);
 
 // Get Db Connection File
 require_once(__DIR__.'/Connection.php');
+
+// Set Time Zone
+Date::setTimezone(Option::time_zone());
 
 // Require Files
 array_filter(Directory::files('resources/requires', 'php'), function($path){
