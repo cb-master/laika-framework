@@ -44,7 +44,7 @@ class Controller
         $view = ROOTPATH . "/views/{$view}.tpl";
         
         // Config Smarty Template
-        $template = $this->template();
+        $template = $this->set_template_directory();
         Template::setTemplateDir($template['dir']);
         Template::setCompileDir($template['compile']);
         Template::setConfigDir($template['config']);
@@ -59,11 +59,10 @@ class Controller
         }
         // Load View File
         Template::display($view);
-        // require_once($view);
     }
 
     // Template Directory
-    private function template():array
+    private function set_template_directory():array
     {
         global $template;
         $template = ROOTPATH.'/'.trim($template, '/');
