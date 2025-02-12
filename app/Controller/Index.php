@@ -33,8 +33,7 @@ class Index Extends Controller
 {
     public function index()
     {
-        // Set Title
-        Template::assign('title', 'Laika Home Page Cached');
+        Template::assign('title', 'Laika Home Page');
         $this->view('index');
     }
 }
