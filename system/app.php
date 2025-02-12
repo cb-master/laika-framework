@@ -27,5 +27,5 @@ return [
     'debug' =>  true,
 
     // Limit
-    'limit' =>  2
+    'limit' =>  20
 ];

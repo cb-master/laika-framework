@@ -10,23 +10,20 @@ defined('ROOTPATH') || defined('CONSOLEPATH') || http_response_code(403).die('40
 
 return [
     // DB Driver
-    'driver' => 'mariadb',
+    'driver'=>'mariadb',
 
     // DB Host
-    'host' => 'localhost',
+    'host'=>'localhost',
 
     // DB Port
-    'port' => 3306,
+    'port'=>3306,
 
     // DB Name
-    'name' => 'test',
+    'name'=>'test',
 
     // DB User
-    'user' => 'root',
+    'user'=>'root',
 
     // DB Password
-    'password' => '',
-
-    // DB Fetch as Object
-    'object' => true
+    'password'=>''
 ];

@@ -11,7 +11,7 @@ namespace CBM\App\Inteface;
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
-interface User
+interface ClientInterface
 {
     public function create();
 }

@@ -23,7 +23,7 @@ class Controller
      * @param string $method - Required Argument as Middleware Method Name.
      * @param array $args - Optionsl Argument. Default is Blank Array.
      */
-    protected function middleware(string $class, string $method, array $args = []):void
+    protected function middleware(string $class, string $method, mixed ...$args):void
     {
         // Create Middleware Folder if Does Not Exist
         if(!file_exists(ROOTPATH.'/app/Middleware')){
@@ -31,7 +31,7 @@ class Controller
         }
         // Load Middleware if Exist
         $class = "\\CBM\\App\\Middleware\\{$class}";
-        call_user_func([$class, $method], $args);
+        call_user_func([$class, $method], ...$args);
     }
 
     // Load View

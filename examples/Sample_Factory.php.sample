@@ -11,8 +11,12 @@ namespace CBM\App\Factory;
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
-class User
+use CBM\App\Factory\ClientFactory
+
+class ClientFactory Extends Factory
 {
+    public static string $table = 'clients';
+
     public function create()
     {
         //

@@ -25,6 +25,9 @@ class Sample Extends Controller
         // Assign Title
         Template::assign('title', 'Sample Controller Page');
 
+        // Assign Specific Function
+        Template::registerFunction('funcname', 'strtoupper');
+
         // Load View File
         Template::display('file_name');
     }

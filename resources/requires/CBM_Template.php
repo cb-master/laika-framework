@@ -31,8 +31,8 @@ class Template
     // Instance
     private static null|object $instance = null;
 
-    // Get Instance
-    private static function instance():object
+    // Get Smarty Instance
+    public static function smarty():object
     {
         self::$instance = self::$instance ?: new Smarty;
         return self::$instance;
@@ -41,64 +41,64 @@ class Template
     // Set Template Directory
     public static function setTemplateDir(string $path)
     {
-        self::instance()->setTemplateDir($path);
+        self::smarty()->setTemplateDir($path);
     }
 
     // Set Compile Directory
     public static function setCompileDir(string $path):void
     {
-        self::instance()->setCompileDir($path);
+        self::smarty()->setCompileDir($path);
     }
 
     // Set Config Directory
     public static function setConfigDir(string $path):void
     {
-        self::instance()->setConfigDir($path);
+        self::smarty()->setConfigDir($path);
     }
 
     // Set Cache Directory
     public static function setCacheDir(string $path):void
     {
-        self::instance()->setCacheDir($path);
+        self::smarty()->setCacheDir($path);
     }
 
     // Set Escape Html
     public static function setEscapeHtml(bool $escape = true):void
     {
-        self::instance()->setEscapeHtml($escape);
+        self::smarty()->setEscapeHtml($escape);
     }
 
     // Set Caching
     public static function setCaching(int|string $caching = self::CACHING_OFF):void
     {
-        self::instance()->caching = (int) $caching;
+        self::smarty()->caching = (int) $caching;
     }
 
     // Set Cache Lifetime
     public static function setCacheLifetime(int|string $time = 3600):void
     {
-        if(self::instance()->caching == 2){
-            self::instance()->setCacheLifetime((int) $time);
+        if(self::smarty()->caching == 2){
+            self::smarty()->setCacheLifetime((int) $time);
         }
     }
 
     // Clear All Cache
     public static function clearCache():void
     {
-        self::instance()->clearAllCache();
+        self::smarty()->clearAllCache();
     }
 
     // Assign Values
     public static function assign(string $key, mixed $value):void
     {
         self::$vars[$key] = $value;
-        self::instance()->assign($key, $value);
+        self::smarty()->assign($key, $value);
     }
 
     // Display Template
     public static function display(string $path):void
     {
-        self::instance()->display($path);
+        self::smarty()->display($path);
     }
 
     // Register Function
@@ -108,7 +108,7 @@ class Template
     public static function registerFunction(string $name, callable $callback):void
     {
         self::$functions[] = $name;
-        self::instance()->registerPlugin('modifier', $name, $callback);
+        self::smarty()->registerPlugin('modifier', $name, $callback);
     }
 
     // Register Block
@@ -118,7 +118,7 @@ class Template
     public static function registerBlock(string $name, callable $callback):void
     {
         self::$blocks[] = $name;
-        self::instance()->registerPlugin('blcok', $name, $callback);
+        self::smarty()->registerPlugin('blcok', $name, $callback);
     }
 
     // Get Loaded Functions

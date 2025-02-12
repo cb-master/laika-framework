@@ -45,7 +45,7 @@ array_filter(Directory::files('resources/custom', 'php'), function($path){
     require($path);
 });
 
-// Display Error
+// Display Errors
 ini_set('display_errors', 0);
 ini_set('error_reporting', 0);
 Error::$display = false;
@@ -55,6 +55,13 @@ if(Config::get('app', 'debug'))
     ini_set('display_errors', 1);
     ini_set('error_reporting', E_ALL);
 }
+// Log Errors
+ini_set("log_errors", true);
+$log_file = ROOTPATH.'/error.log';
+if(!file_exists($log_file)){
+    file_put_contents($log_file, '');
+}
+ini_set('error_log', $log_file);
 
 // Set Session In DB or Not. Default is In DB
 if(Option::dbsession() != 'yes'){
