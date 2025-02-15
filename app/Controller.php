@@ -49,9 +49,14 @@ class Controller
         Template::setCompileDir($template['compile']);
         Template::setConfigDir($template['config']);
         Template::setCacheDir($template['cache']);
-        Template::setCaching(Option::template_caching());
-        Template::setCacheLifetime(Option::template_cache_lifetime());
-        Template::assign('webhost', Uri::app_uri());
+        Template::setCaching((int) Option::template_caching());
+        Template::setCacheLifetime((int) Option::template_cache_lifetime());
+        // Set Template Directory
+        $dir = dirname($view).'/layouts';
+        if(!file_exists($dir)){
+            mkdir($dir);
+        }
+        Template::addTemplateDir($dir);
         // Register Functions
         $funcs = get_defined_functions()['user'];
         foreach($funcs as $func){

@@ -8,6 +8,7 @@
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
+use CBM\Handler\Error\Error;
 use \Smarty\Smarty;
 
 class Template
@@ -36,24 +37,6 @@ class Template
     {
         self::$instance = self::$instance ?: new Smarty;
         return self::$instance;
-    }
-
-    // Set Template Directory
-    public static function setTemplateDir(string $path)
-    {
-        self::smarty()->setTemplateDir($path);
-    }
-
-    // Set Compile Directory
-    public static function setCompileDir(string $path):void
-    {
-        self::smarty()->setCompileDir($path);
-    }
-
-    // Set Config Directory
-    public static function setConfigDir(string $path):void
-    {
-        self::smarty()->setConfigDir($path);
     }
 
     // Set Cache Directory
@@ -86,19 +69,6 @@ class Template
     public static function clearCache():void
     {
         self::smarty()->clearAllCache();
-    }
-
-    // Assign Values
-    public static function assign(string $key, mixed $value):void
-    {
-        self::$vars[$key] = $value;
-        self::smarty()->assign($key, $value);
-    }
-
-    // Display Template
-    public static function display(string $path):void
-    {
-        self::smarty()->display($path);
     }
 
     // Register Function
@@ -139,4 +109,13 @@ class Template
         return self::$vars;
     }
 
+    public static function __callStatic($name, $arguments):mixed
+    {
+        try{
+            return call_user_func_array([self::smarty(), $name], $arguments);
+        }catch(Error $er) {
+            Error::throw($er);
+        }
+        return false;
+    }
 }
