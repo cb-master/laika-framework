@@ -37,12 +37,11 @@ require_once(__DIR__.'/Connection.php');
 // Set Time Zone
 Date::setTimezone(Option::time_zone());
 
-// Require Files
-array_filter(Directory::files('resources/requires', 'php'), function($path){
-    require($path);
-});
-array_filter(Directory::files('resources/custom', 'php'), function($path){
-    require($path);
+// Require Classes & Functions
+array_filter(Directory::folders('resources'), function($dir){
+    array_filter(Directory::files("{$dir}", 'php'), function($path){
+        require($path);
+    });
 });
 
 // Display Errors
