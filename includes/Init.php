@@ -21,9 +21,6 @@ require_once(__DIR__."/../config.php");
 // Require Autoload
 require_once(__DIR__."/../vendor/autoload.php");
 
-// Set Response Headers
-Response::header();
-
 // Require All Config Environment Files
 foreach(Directory::files('system', 'php') as $path){
     $configs[basename($path, '.php')] = require($path);
@@ -33,6 +30,9 @@ Config::set($configs);
 
 // Get Db Connection File
 require_once(__DIR__.'/Connection.php');
+
+// Set Response Headers
+Response::header();
 
 // Set Time Zone
 Date::setTimezone(Option::time_zone());
