@@ -33,7 +33,7 @@ unset($GLOBALS['configs']);
 require_once(__DIR__.'/Connection.php');
 
 // Session Time
-Session::set(['initiate'=>microtime(true)]);
+Session::set(['initiate'=>time()]);
 
 // Set Response Headers
 Response::header();
