@@ -27,6 +27,7 @@ foreach(Directory::files('system', 'php') as $path){
 }
 // Set Config Environments
 Config::set($configs);
+unset($GLOBALS['configs']);
 
 // Get Db Connection File
 require_once(__DIR__.'/Connection.php');
