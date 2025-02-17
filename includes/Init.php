@@ -32,6 +32,9 @@ unset($GLOBALS['configs']);
 // Get Db Connection File
 require_once(__DIR__.'/Connection.php');
 
+// Session Time
+Session::set(['initiate'=>microtime()]);
+
 // Set Response Headers
 Response::header();
 
