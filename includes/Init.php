@@ -29,25 +29,6 @@ foreach(Directory::files('system', 'php') as $path){
 Config::set($configs);
 unset($GLOBALS['configs']);
 
-// Get Db Connection File
-require_once(__DIR__.'/Connection.php');
-
-// Session Time
-Session::set(['initiate'=>time()]);
-
-// Set Response Headers
-Response::header();
-
-// Set Time Zone
-Date::setTimezone(Option::time_zone());
-
-// Require Classes & Functions
-array_filter(Directory::folders('resources'), function($dir){
-    array_filter(Directory::files("{$dir}", 'php'), function($path){
-        require($path);
-    });
-});
-
 // Display Errors
 ini_set('display_errors', 0);
 ini_set('error_reporting', 0);
@@ -75,3 +56,22 @@ if(Option::dbsession() != 'yes'){
 set_error_handler([Error::class, 'errorHandler']);
 set_exception_handler([Error::class, 'exceptionHandler']);
 register_shutdown_function([Error::class, 'shutdownHandler']);
+
+// Get Db Connection File
+require_once(__DIR__.'/Connection.php');
+
+// Session Time
+Session::set(['initiate'=>time()]);
+
+// Set Response Headers
+Response::header();
+
+// Set Time Zone
+Date::setTimezone(Option::time_zone());
+
+// Require Classes & Functions
+array_filter(Directory::folders('resources'), function($dir){
+    array_filter(Directory::files("{$dir}", 'php'), function($path){
+        require($path);
+    });
+});
