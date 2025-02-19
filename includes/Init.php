@@ -10,7 +10,6 @@ defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
 use CBM\Core\Directory\Directory;
 use CBM\Core\Response\Response;
-use CBM\Core\Request\Request;
 use \CBM\Handler\Error\Error;
 use CBM\Core\Config\Config;
 use CBM\Core\Option\Option;
@@ -35,9 +34,6 @@ require_once(__DIR__.'/Connection.php');
 
 // Session Time
 Session::set(['initiate'=>time()]);
-
-// Generate Token
-Request::generate_csrf_token();
 
 // Set Response Headers
 Response::header();
