@@ -15,9 +15,12 @@ use CBM\Core\Config\Config;
 use CBM\Core\Option\Option;
 use CBM\Session\Session;
 use CBM\Core\Date\Date;
+use CBM\Model\Model;
 
-// Require Config
+// Require Config & Constants
 require_once(__DIR__."/../config.php");
+require_once(__DIR__."/../constants.php");
+
 // Require Autoload
 require_once(__DIR__."/../vendor/autoload.php");
 
@@ -25,49 +28,30 @@ require_once(__DIR__."/../vendor/autoload.php");
 foreach(Directory::files('system', 'php') as $path){
     $configs[basename($path, '.php')] = require($path);
 }
+
 // Set Config Environments
 Config::set($configs);
 unset($GLOBALS['configs']);
 
-// Display Errors
-ini_set('display_errors', 0);
-ini_set('error_reporting', 0);
-Error::$display = false;
-if(Config::get('app', 'debug'))
-{
-    Error::$display = true;
-    ini_set('display_errors', 1);
-    ini_set('error_reporting', E_ALL);
-}
-// Log Errors
-ini_set("log_errors", true);
-$log_file = ROOTPATH.'/error.log';
-if(!file_exists($log_file)){
-    file_put_contents($log_file, '');
-}
-ini_set('error_log', $log_file);
+// Register Error Handler
+Error::registerErrorHandler(DEBUG);
+
+// Connect Database
+Model::config(Config::get('database'));
 
 // Set Session In DB or Not. Default is In DB
 if(Option::dbsession() != 'yes'){
     Session::session_in_db(false);
 }
 
-// Handling Errors
-set_error_handler([Error::class, 'errorHandler']);
-set_exception_handler([Error::class, 'exceptionHandler']);
-register_shutdown_function([Error::class, 'shutdownHandler']);
-
-// Get Db Connection File
-require_once(__DIR__.'/Connection.php');
+// Set Time Zone
+Date::setTimezone(Option::time_zone());
 
 // Session Time
 Session::set(['initiate'=>time()]);
 
 // Set Response Headers
 Response::header();
-
-// Set Time Zone
-Date::setTimezone(Option::time_zone());
 
 // Require Classes & Functions
 array_filter(Directory::folders('resources'), function($dir){

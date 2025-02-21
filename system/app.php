@@ -23,9 +23,6 @@ return [
     // System Encryption Method
     'encryption_method' =>  'AES-256-CBC',
 
-    // System Debug
-    'debug' =>  true,
-
     // Limit
     'limit' =>  20
 ];
