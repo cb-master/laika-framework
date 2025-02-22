@@ -25,13 +25,14 @@ require_once(__DIR__."/../constants.php");
 require_once(__DIR__."/../vendor/autoload.php");
 
 // Require All Config Environment Files
-foreach(Directory::files('system', 'php') as $path){
+$configs = [];
+foreach(Directory::files(__DIR__.'/../system', 'php') as $path){
     $configs[basename($path, '.php')] = require($path);
 }
 
 // Set Config Environments
 Config::set($configs);
-unset($GLOBALS['configs']);
+unset($configs);
 
 // Register Error Handler
 Error::registerErrorHandler(DEBUG);
@@ -54,7 +55,7 @@ Session::set(['initiate'=>time()]);
 Response::header();
 
 // Require Classes & Functions
-array_filter(Directory::folders('resources'), function($dir){
+array_filter(Directory::folders(__DIR__.'/../resources'), function($dir){
     array_filter(Directory::files("{$dir}", 'php'), function($path){
         require($path);
     });
