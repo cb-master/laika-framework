@@ -53,7 +53,7 @@ function to_decinal(int|string|float|null $number, int $decimal = 2):string
 function to_price(string|int|float $price = null, int $decimal = 2):string
 {
     $price = to_decinal($price, $decimal);
-    return Option::get('currencypfx') . $price;
+    return Option::currencypfx() . $price;
 }
 
 
