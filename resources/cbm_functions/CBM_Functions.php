@@ -92,10 +92,10 @@ function add_filter(string $filter, callable $callback, int $priority = 10):void
 // Apply Filter
 /**
  * @param string $filter - Required Argument.
- * @param mixed $value - Required Argument.
+ * @param mixed $value - Optional Argument. Default is Null.
  * @param mixed ...$args - Optional Arguments.
  */
-function apply_filter(string $filter, mixed $value, mixed ...$args):mixed
+function apply_filter(string $filter, mixed $value = null, mixed ...$args):mixed
 {
     return Filter::apply_filter($filter, $value, ...$args);
 }
