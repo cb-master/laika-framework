@@ -79,25 +79,32 @@ function access(string $access, string $for):bool
 }
 
 // Add Filter
-function add_filter(string $filter, callable $callback):void
+/**
+ * @param string $filter - Required Argument.
+ * @param callable $callback - Required Argument.
+ * @param int $priority - Optional Argument. Default is 10
+ */
+function add_filter(string $filter, callable $callback, int $priority = 10):void
 {
-    Filter::add_filter($filter, $callback);
+    Filter::add_filter($filter, $callback, $priority);
 }
 
-// Add Filter
-function do_filter(string $filter, mixed ...$args):mixed
+// Apply Filter
+/**
+ * @param string $filter - Required Argument.
+ * @param mixed $value - Required Argument.
+ * @param mixed ...$args - Optional Arguments.
+ */
+function apply_filter(string $filter, mixed $value, mixed ...$args):mixed
 {
-    return Filter::do_filter($filter, ...$args);
+    return Filter::apply_filter($filter, $value, ...$args);
 }
 
-// Add Filter
-function add_action(string $filter, callable $callback):void
-{
-    Filter::add_action($filter, $callback);
-}
+//////////////////////////
+//////// FILTERS /////////
+//////////////////////////
 
-// Add Filter
-function do_action(string $filter, mixed ...$args):mixed
-{
-    return Filter::do_action($filter, ...$args);
-}
+// Theme Slug
+add_filter('load_view', function($view){
+    return $view;
+});
