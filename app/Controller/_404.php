@@ -20,6 +20,6 @@ class _404 Extends Controller
     public function index()
     {
         Template::assign('title', 'Page Not Found');
-        $this->view('_404');
+        $this->view(apply_filter('load_view', '_404'));
     }
 }

@@ -41,7 +41,6 @@ class Controller
     protected function view(string $view):void
     {
         // Theme File
-        $view = apply_filter('load_view', $view);
         $view = ROOTPATH . "/views/{$view}.tpl";
         
         // Config Smarty Template

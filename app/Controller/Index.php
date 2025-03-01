@@ -34,6 +34,6 @@ class Index Extends Controller
     public function index()
     {
         Template::assign('title', 'Laika Home Page');
-        $this->view('index');
+        $this->view(apply_filter('load_view', 'index'));
     }
 }
