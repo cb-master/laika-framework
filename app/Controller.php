@@ -44,11 +44,12 @@ class Controller
         // Theme File
         $view = ROOTPATH . "/views/{$view}.tpl";
         $functions_dir = dirname($view).'/functions';
-        if(file_exists($functions_dir)){
-            array_filter(Directory::files($functions_dir, 'php'), function($file){
-                require($file);
-            });
+        if(!file_exists($functions_dir)){
+            mkdir($functions_dir);
         }
+        array_filter(Directory::files($functions_dir, 'php'), function($file){
+            require($file);
+        });
         
         // Config Smarty Template
         $template = $this->set_template_directory();
