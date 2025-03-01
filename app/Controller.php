@@ -11,6 +11,7 @@ namespace CBM\App;
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
+use CBM\COre\Directory\Directory;
 use CBM\Core\Option\Option;
 use CBM\Core\Uri\Uri;
 use Template;
@@ -42,6 +43,12 @@ class Controller
     {
         // Theme File
         $view = ROOTPATH . "/views/{$view}.tpl";
+        $functions_dir = dirname($view).'/functions';
+        if(file_exists($functions_dir)){
+            array_filter(Directory::files($functions_dir, 'php'), function($file){
+                require($file);
+            });
+        }
         
         // Config Smarty Template
         $template = $this->set_template_directory();
