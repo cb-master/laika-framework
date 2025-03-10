@@ -25,14 +25,10 @@ require_once(__DIR__."/../constants.php");
 require_once(__DIR__."/../vendor/autoload.php");
 
 // Require All Config Environment Files
-$configs = [];
+// $configs = [];
 foreach(Directory::files(__DIR__.'/../system', 'php') as $path){
-    $configs[basename($path, '.php')] = require($path);
+    Config::set([strtolower(basename($path, '.php'))=>require($path)]);
 }
-
-// Set Config Environments
-Config::set($configs);
-unset($configs);
 
 // Register Error Handler
 Error::registerErrorHandler(DEBUG);
