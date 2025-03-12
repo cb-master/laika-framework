@@ -37,12 +37,12 @@ Error::registerErrorHandler(DEBUG);
 Model::config(Config::get('database'));
 
 // Set Session In DB or Not. Default is In DB
-if(Option::dbsession() != 'yes'){
+if(Option::key('dbsession') != 'yes'){
     Session::session_in_db(false);
 }
 
 // Set Time Zone
-Date::setTimezone(Option::time_zone());
+Date::setTimezone(Option::key('time_zone'));
 
 // Session Time
 Session::set(['initiate'=>time()]);
