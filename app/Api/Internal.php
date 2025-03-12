@@ -19,73 +19,73 @@ class Internal
     // Acceptable Methods
     public static array $methods = ["GET", "POST", "PATCH", "DELETE"];
 
-    public static function init():string
+    public static function init():array
     {
         // Set Response Headers
-        Response::header([
-            'Access-Control-Allow-Methods'  =>  implode(",", self::$methods),
+        Response::setHeader([
+            'Access-Control-Allow-Methods'  =>  implode(", ", self::$methods),
             'Access-Control-Allow-Headers'  =>  'Authorization, Origin, X-Requested-With, Content-Type, Accept'
         ]);
 
         // Request Deny If Remote Is Not Server Self
         if($_SERVER['REMOTE_ADDR'] != $_SERVER['SERVER_ADDR']){
-            Response::set(403);
-            return json_encode([
-                'code'      =>  'AP403',
-                'status'    =>  false,
+            return [
+                'code'      =>  Response::code(403),
+                'status'    =>  'failed',
                 'message'   =>  'Request is not allowed!',
                 'data'      =>  []
-            ], JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+            ];
         }
 
         // Request Deny If Authorization Header is Missing
         if(!isset($_SERVER['HTTP_AUTHORIZATION'])){
-            Response::set(401);
-            return json_encode([
-                'code'      =>  'AP401',
-                'status'    =>  false,
+            return [
+                'code'      =>  Response::code(401),
+                'status'    =>  'failed',
                 'message'   =>  'No token found!',
                 'data'      =>  []
-            ], JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+            ];
         }
 
         // Request Deny If Request Method is Missing
         if(!in_array(self::method(), self::$methods)){
-            Response::set(405);
-            return json_encode([
-                'code'      =>  'AP405',
-                'status'    =>  false,
-                'message'   =>  'Unsupported Method!',
-                'data'      =>  []
-            ], JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+            return self::unsupported_method();
         }
 
         // Request Deny If Content Type Is Not Supported
         if(!isset($_SERVER['CONTENT_TYPE']) || (strtolower($_SERVER['CONTENT_TYPE']) != 'application/json')){
-            Response::set(415);
-            return json_encode([
-                'code'      =>  'AP415',
-                'status'    =>  false,
-                'message'   =>  'Content Type Should Be JSON!',
+            return [
+                'code'      =>  Response::code(415),
+                'status'    =>  'failed',
+                'message'   =>  'Invalid Content Type!',
                 'data'      =>  []
-            ], JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+            ];
         }
 
         // Request Deny If is Not A Valid Admin Token
         $staff = Model::table('admins')->filter('token', '=', $_SERVER['HTTP_AUTHORIZATION'])->get('token');
         if(count($staff) !== 1){
-            Response::set(401);
-            return json_encode([
-                'code'      =>  'AP401',
-                'status'    =>  false,
-                'message'   =>  'Invalid Token!',
+            return [
+                'code'      =>  Response::code(401),
+                'status'    =>  'failed',
+                'message'   =>  'Invalid Staff Token!',
                 'data'      =>  []
-            ], JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
-            die();
+            ];
         }
-        return '';
+        return [];
     }
 
+    // Unsupported Method
+    public static function unsupported_method():array
+    {
+        return [
+            'code'      =>  Response::code(405),
+            'status'    =>  'failed',
+            'message'   =>  'Unsupported Method!',
+            'data'      =>  []
+        ];
+    }
+    
     // Get Request Data
     public static function request():array
     {
@@ -100,16 +100,19 @@ class Internal
         return strtoupper($_SERVER['REQUEST_METHOD']);
     }
 
-    // Unsupported Method
-    public static function unsupported_method()
+    // Set Output
+    /**
+     * @param int $code Optional Parameter. Default is 200.
+     * @param array $data Optional Parameter. Default is [].
+     * @param string $message Optional Parameter. Default is ''.
+     */
+    public static function setOutput(int $code = 200, array $data = [], string $message = '')
     {
-        Response::set(405);
-        return json_encode([
-            'code'      =>  'AP405',
-            'status'    =>  false,
-            'message'   =>  'Unsupported Method!',
-            'data'      =>  []
-        ], JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+        return [
+            'code'      =>  Response::code($code),
+            'status'    =>  ($code == 200) ? 'success' : 'failed',
+            'message'   =>  $message,
+            'data'      =>  $data
+        ];
     }
-
 }

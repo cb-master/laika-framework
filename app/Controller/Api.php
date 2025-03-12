@@ -8,6 +8,8 @@
 // Namespace
 namespace CBM\App\Controller;
 
+use CBM\App\Api\Internal;
+
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
@@ -26,7 +28,7 @@ defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 * }
 */
 
-class Api
+class Api Extends Internal
 {
     //
 }

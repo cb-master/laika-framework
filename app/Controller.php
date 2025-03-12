@@ -13,7 +13,6 @@ defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
 use CBM\COre\Directory\Directory;
 use CBM\Core\Option\Option;
-use CBM\Core\Uri\Uri;
 use Template;
 
 class Controller
@@ -56,8 +55,8 @@ class Controller
         Template::setCompileDir($template['compile']);
         Template::setConfigDir($template['config']);
         Template::setCacheDir($template['cache']);
-        Template::setCaching((int) Option::template_caching());
-        Template::setCacheLifetime((int) Option::template_cache_lifetime());
+        Template::setCaching((int) Option::key('template_caching'));
+        Template::setCacheLifetime((int) Option::key('template_cache_lifetime'));
         // Set Template Directory
         $dir = dirname($view).'/layouts';
         if(!file_exists($dir)){
