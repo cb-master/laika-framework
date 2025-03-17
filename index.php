@@ -12,6 +12,6 @@ use CBM\Core\App\App;
 
 // Require Init File
 require_once(ROOTPATH."/includes/Init.php");
-test();
+
 // Run Application
 App::run();
