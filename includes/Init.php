@@ -13,7 +13,6 @@ use CBM\Core\Response\Response;
 use \CBM\Handler\Error\Error;
 use CBM\Core\Config\Config;
 use CBM\Core\Option\Option;
-use CBM\Session\Session;
 use CBM\Core\Date\Date;
 use CBM\Model\Model;
 
@@ -25,7 +24,6 @@ require_once(__DIR__."/../constants.php");
 require_once(__DIR__."/../vendor/autoload.php");
 
 // Require All Config Environment Files
-// $configs = [];
 foreach(Directory::files(__DIR__.'/../system', 'php') as $path){
     Config::set([strtolower(basename($path, '.php'))=>require($path)]);
 }
@@ -36,16 +34,8 @@ Error::registerErrorHandler(DEBUG);
 // Connect Database
 Model::config(Config::get('database'));
 
-// Set Session In DB or Not. Default is In DB
-if(Option::key('dbsession') != 'yes'){
-    Session::session_in_db(false);
-}
-
 // Set Time Zone
 Date::setTimezone(Option::key('time_zone'));
-
-// Session Time
-Session::set(['initiate'=>time()]);
 
 // Set Response Headers
 Response::header();
