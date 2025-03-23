@@ -29,7 +29,7 @@ foreach(Directory::files(__DIR__.'/../system', 'php') as $path){
 }
 
 // Register Error Handler
-Error::registerErrorHandler(DEBUG);
+Error::registerErrorHandlers(DEBUG);
 
 // Connect Database
 Model::config(Config::get('database'));
@@ -46,3 +46,6 @@ array_filter(Directory::folders(__DIR__.'/../resources'), function($dir){
         require($path);
     });
 });
+
+// Load postload file if custom filters/functions/clases to load
+require_once(__DIR__.'/../resources/postload.php');
