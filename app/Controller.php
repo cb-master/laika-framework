@@ -30,6 +30,7 @@ class Controller
             mkdir(ROOTPATH.'/app/Middleware');
         }
         // Load Middleware if Exist
+        $class = ucfirst($class);
         $class = "\\CBM\\App\\Middleware\\{$class}";
         call_user_func([$class, $method], ...$args);
     }
