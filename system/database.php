@@ -10,7 +10,7 @@ defined('ROOTPATH') || defined('CONSOLEPATH') || http_response_code(403).die('40
 
 return [
     // DB Driver
-    'driver'=>'mariadb',
+    'driver'=>'mysql',
 
     // DB Host
     'host'=>'localhost',
@@ -19,11 +19,11 @@ return [
     'port'=>3306,
 
     // DB Name
-    'name'=>'test',
+    'name'=>'laika',
 
     // DB User
-    'user'=>'root',
+    'user'=>'cbm',
 
     // DB Password
-    'password'=>''
+    'password'=>'T@zwar127169'
 ];
