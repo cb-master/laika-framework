@@ -41,10 +41,8 @@ Date::setTimezone(Option::key('time_zone'));
 Response::header();
 
 // Require Classes & Functions
-array_filter(Directory::folders(__DIR__.'/../resources'), function($dir){
-    array_filter(Directory::files("{$dir}", 'php'), function($path){
-        require($path);
-    });
+array_filter(Directory::files(__DIR__.'/classes', 'php'), function($path){
+    require($path);
 });
 
 // Load postload file if custom filters/functions/clases to load
