@@ -40,7 +40,7 @@ Date::setTimezone(Option::key('time_zone'));
 // Set Response Headers
 Response::header();
 
-// Require Classes & Functions
+// Require Default Classes
 array_filter(Directory::files(__DIR__.'/classes', 'php'), function($path){
     require($path);
 });
