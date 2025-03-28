@@ -32,7 +32,7 @@ class Controller
         // Load Middleware if Exist
         $class = ucfirst($class);
         $class = "\\CBM\\App\\Middleware\\{$class}";
-        call_user_func([$class, $method], ...$args);
+        call_user_func([new $class, $method], ...$args);
     }
 
     // Load View
