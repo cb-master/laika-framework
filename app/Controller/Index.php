@@ -31,7 +31,7 @@ use Template;
 
 class Index Extends Controller
 {
-    public function index()
+    public function index($request, $uri)
     {
         Template::assign('title', 'Laika Home Page');
         $this->view(apply_filter('load_view', 'index'));
