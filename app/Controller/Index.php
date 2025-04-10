@@ -12,7 +12,6 @@ namespace CBM\App\Controller;
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
 use CBM\Core\App\Controller;
-use CBM\Core\Vault\Vault;
 
 /**
 * class Index Extends Controller

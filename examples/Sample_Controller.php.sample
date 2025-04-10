@@ -11,8 +11,7 @@ namespace CBM\App\Controller;
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
-use CBM\App\Controller;
-use Template;
+use CBM\Core\App\Controller;
 
 class Sample Extends Controller
 {
