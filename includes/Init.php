@@ -18,7 +18,6 @@ use CBM\Model\Model;
 
 // Require Config & Constants
 require_once(__DIR__."/../config.php");
-require_once(__DIR__."/../constants.php");
 
 // Require Autoload
 require_once(__DIR__."/../vendor/autoload.php");
@@ -28,11 +27,11 @@ foreach(Directory::files(__DIR__.'/../system', 'php') as $path){
     Config::set([strtolower(basename($path, '.php'))=>require($path)]);
 }
 
-// Register Error Handler
-Error::registerErrorHandlers(DEBUG);
-
 // Connect Database
 Model::config(Config::get('database'));
+
+// Register Error Handler
+Error::registerErrorHandlers(DEBUG);
 
 // Set Time Zone
 Date::setTimezone(Option::key('time_zone'));

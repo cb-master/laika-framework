@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{$title}</title>
+    <title><?= $title ?></title>
     <style>
         *{
             box-sizing: border-box;
@@ -21,21 +21,11 @@
             align-items:center;
             justify-content: center;
         }
-        img{
-            display:block;
-        }
-        h1{
-            color:red;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
     <div class="body">
-        <div>
-            <img src="{$webhost}/assets/images/page-not-found.svg" alt="" width="400">
-            <h1>Page Not Found!</h1>
-        </div>
+        <h1>Laika Framework</h1>
     </div>
 </body>
 </html>

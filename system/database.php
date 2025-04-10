@@ -19,11 +19,11 @@ return [
     'port'=>3306,
 
     // DB Name
-    'name'=>'laika',
+    'name'=>'test',
 
     // DB User
-    'user'=>'cbm',
+    'user'=>'test',
 
     // DB Password
-    'password'=>'T@zwar127169'
+    'password'=>'Test@123456'
 ];
