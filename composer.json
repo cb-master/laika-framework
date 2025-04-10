@@ -21,7 +21,6 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=8.1",
-        "cb-master/cbm-core": "dev-main",
-        "smarty/smarty": "^5.4"
+        "cb-master/cbm-core": "dev-main"
     }
 }
