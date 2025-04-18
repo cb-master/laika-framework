@@ -12,19 +12,19 @@ return [
     //// Return Application Constants as Array
 
     // App Name
-    'name'  =>  'Laika',
+    'name' => 'Laika',
 
     // Provider
-    'provider'  =>  'Cloud Bill Master',
+    'provider' => 'Cloud Bill Master',
 
     // Provider Website
-    'provider_uri'  =>  'https://cloudbillmaster.com',
+    'provider_uri' => 'https://cloudbillmaster.com',
 
     // System Encryption Method
-    'encryption_method' =>  'AES-256-CBC',
+    'encryption_method' => 'AES-256-CBC',
 
     // System Encryption Secret
-    'secret' =>  'f3ir65uFvUbBnQW9MuiaWcKaUV193E1A',
+    'secret' => 'f3ir65uFvUbBnQW9MuiaWcKaUV193E1A',
 
     // Limit
     'limit' =>  20

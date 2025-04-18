@@ -22,10 +22,7 @@ require_once(__DIR__."/../config.php");
 // Require Autoload
 require_once(__DIR__."/../vendor/autoload.php");
 
-// Require All Config Environment Files
-foreach(Directory::files(__DIR__.'/../system', 'php') as $path){
-    Config::set([strtolower(basename($path, '.php'))=>require($path)]);
-}
+Config::set(Directory::files(__DIR__.'/../system', 'php'));
 
 // Connect Database
 Model::config(Config::get('database'));
