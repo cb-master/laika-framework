@@ -8,7 +8,10 @@
 // Namespace
 namespace CBM\App\Controller;
 
-use CBM\App\Api\Internal;
+use CBM\Core\Api\APIMessage;
+use CBM\Core\Api\Validate;
+use CBM\Core\Api\Headers;
+use CBM\Core\Api\Token;
 
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
@@ -28,7 +31,7 @@ defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 * }
 */
 
-class Api Extends Internal
+class Api
 {
-    //
+    // Write API Links as Method From Here
 }

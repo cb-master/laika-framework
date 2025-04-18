@@ -23,6 +23,9 @@ return [
     // System Encryption Method
     'encryption_method' =>  'AES-256-CBC',
 
+    // System Encryption Secret
+    'secret' =>  'f3ir65uFvUbBnQW9MuiaWcKaUV193E1A',
+
     // Limit
     'limit' =>  20
 ];
