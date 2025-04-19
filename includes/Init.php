@@ -13,6 +13,7 @@ use CBM\Core\Response\Response;
 use \CBM\Handler\Error\Error;
 use CBM\Core\Config\Config;
 use CBM\Core\Option\Option;
+use CBM\Core\Vault\Vault;
 use CBM\Core\Date\Date;
 use CBM\Model\Model;
 
@@ -26,6 +27,11 @@ Config::set(Directory::files(__DIR__.'/../system', 'php'));
 
 // Connect Database
 Model::config(Config::get('database'));
+
+// Set Secret If Missing
+if(!Config::get('app','secret')){
+    Vault::generateSecretKey();
+}
 
 // Register Error Handler
 Error::registerErrorHandlers(DEBUG);
