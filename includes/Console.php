@@ -29,4 +29,4 @@ require_once(CONSOLEPATH."/vendor/autoload.php");
 Config::set(Directory::files(__DIR__.'/../system', 'php'));
 
 // Get Db Connection File
-ConnectionManager::add(Config::get('database'));
+ConnectionManager::add(Config::get('database', 'default'));

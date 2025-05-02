@@ -14,8 +14,8 @@ defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 class Sample extends Model
 {
     // Table Name
-    public static string $table = 'table';
+    protected string $table = 'table_name';
 
     // Table ID
-    public static string $table = 'id';
+    protected string $id = 'table_id';
 }
