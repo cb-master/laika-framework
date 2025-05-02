@@ -9,13 +9,14 @@
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
 use CBM\Core\Directory\Directory;
+use CBM\Model\ConnectionManager;
 use CBM\Core\Response\Response;
+use CBM\Session\SessionConfig;
 use \CBM\Handler\Error\Error;
 use CBM\Core\Config\Config;
 use CBM\Core\Option\Option;
 use CBM\Core\Vault\Vault;
 use CBM\Core\Date\Date;
-use CBM\Model\Model;
 
 // Require Config & Constants
 require_once(__DIR__."/../config.php");
@@ -26,7 +27,10 @@ require_once(__DIR__."/../vendor/autoload.php");
 Config::set(Directory::files(__DIR__.'/../system', 'php'));
 
 // Connect Database
-Model::config(Config::get('database'));
+ConnectionManager::add(Config::get('database','default'));
+
+// Set Session PDO
+SessionConfig::setPdo(ConnectionManager::get());
 
 // Set Secret If Missing
 if(!Config::get('app','secret')){

@@ -11,7 +11,11 @@ namespace CBM\App\Model;
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
-class Sample
+class Sample extends Model
 {
-    // Start Writing Your Methods Here
+    // Table Name
+    public static string $table = 'table';
+
+    // Table ID
+    public static string $table = 'id';
 }
