@@ -8,12 +8,11 @@
 // Forbidden Access
 defined('ROOTPATH') || http_response_code(403).die('403 Forbidden Access!');
 
+use CBM\Core\ErrorHandler\ErrorHandler;
 use CBM\Core\Directory\Directory;
 use CBM\Model\ConnectionManager;
 use CBM\Core\Response\Response;
 use CBM\Session\SessionConfig;
-use \CBM\Handler\Error\Error;
-use CBM\Core\ErrorHandler\ErrorHandler;
 use CBM\Core\Config\Config;
 use CBM\Core\Option\Option;
 use CBM\Core\Vault\Vault;
