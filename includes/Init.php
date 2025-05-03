@@ -13,6 +13,7 @@ use CBM\Model\ConnectionManager;
 use CBM\Core\Response\Response;
 use CBM\Session\SessionConfig;
 use \CBM\Handler\Error\Error;
+use CBM\Core\ErrorHandler\ErrorHandler;
 use CBM\Core\Config\Config;
 use CBM\Core\Option\Option;
 use CBM\Core\Vault\Vault;
@@ -23,6 +24,7 @@ require_once(__DIR__."/../config.php");
 
 // Require Autoload
 require_once(__DIR__."/../vendor/autoload.php");
+ErrorHandler::register(DEBUG);
 
 Config::set(Directory::files(__DIR__.'/../system', 'php'));
 
@@ -36,9 +38,6 @@ SessionConfig::setPdo(ConnectionManager::get());
 if(!Config::get('app','secret')){
     Vault::generateSecretKey();
 }
-
-// Register Error Handler
-Error::registerErrorHandlers(DEBUG);
 
 // Set Time Zone
 Date::setTimezone(Option::key('time_zone'));
