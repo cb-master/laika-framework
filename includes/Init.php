@@ -23,6 +23,8 @@ require_once(__DIR__."/../config.php");
 
 // Require Autoload
 require_once(__DIR__."/../vendor/autoload.php");
+
+// Set Error Reporting
 ErrorHandler::register(DEBUG);
 
 Config::set(Directory::files(__DIR__.'/../system', 'php'));
