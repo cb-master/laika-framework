@@ -15,6 +15,7 @@ use CBM\Core\Response\Response;
 use CBM\Session\SessionConfig;
 use CBM\Core\Config\Config;
 use CBM\Core\Option\Option;
+use CBM\Core\Token\Token;
 use CBM\Core\Vault\Vault;
 use CBM\Core\Date\Date;
 
@@ -27,7 +28,11 @@ require_once(__DIR__."/../vendor/autoload.php");
 // Set Error Reporting
 ErrorHandler::register(DEBUG);
 
+// Set Configuration Constants
 Config::set(Directory::files(__DIR__.'/../system', 'php'));
+
+// Set Cookies
+Token::register();
 
 // Connect Database
 ConnectionManager::add(Config::get('database','default'));
