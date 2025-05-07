@@ -25,7 +25,7 @@ return [
                 'username'=>'cbm',
 
                 // DB Password
-                'password'=>'12345678'
+                'password'=>''
             ],
     // 'read'      => [
     //         'driver'=>'mysql',
