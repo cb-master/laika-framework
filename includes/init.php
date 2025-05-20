@@ -14,3 +14,10 @@ Config::set(Directory::files(ROOTPATH.'/configs', 'php'));
 
 // Register Error Handler
 ErrorHandler::register(Config::get('app', 'debug'));
+
+// Autoload System Files
+array_map(function($folder){
+    array_map(function($file){
+        require_once $file;
+    }, Directory::files($folder, 'php'));
+}, Directory::folders(ROOTPATH.'/system'));
