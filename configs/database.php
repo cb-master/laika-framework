@@ -11,9 +11,9 @@ return [
     // Port
     'port' => 3306,
     // Database Name
-    'dbname' => 'cbm',
+    'dbname' => 'your_database_name',
     // Username
-    'username' => 'cbm',
+    'username' => 'root',
     // Password
-    'password' => 'T@zwar127169'
+    'password' => ''
 ];

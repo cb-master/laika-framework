@@ -4,7 +4,13 @@
 defined('ROOTPATH') || http_response_code(403).die('Direct Access Denied!');
 
 use CBM\Core\ErrorHandler\ErrorHandler;
-ini_set('display_errors', 1);
+use CBM\Core\Directory\Directory;
+use CBM\Core\Config\Config;
+
 require(__DIR__.'/../vendor/autoload.php');
+
+// Load Configs
+Config::set(Directory::files(ROOTPATH.'/configs', 'php'));
+
 // Register Error Handler
-ErrorHandler::register(true);
+ErrorHandler::register(Config::get('app', 'debug'));
