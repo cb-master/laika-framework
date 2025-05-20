@@ -14,7 +14,3 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
-<Files laika>
-    order allow,deny
-    Deny from all
-</Files>

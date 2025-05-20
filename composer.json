@@ -1,27 +1,21 @@
 {
-    "name": "cb-master/laika-framework",
-    "description": "A PHP Framework From Cloud Bill Master.",
+    "name": "cb-master/php-mvc",
+    "description": "A Simple PHP MVC Framework",
     "type": "project",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "CBM\\App\\": "app/"
+            "App\\": "app/"
         }
     },
     "authors": [
         {
-            "name": "Cloud Bill Master",
+            "name": "cb-master",
             "email": "strblackhawk@gmail.com"
-        },
-        {
-            "name": "Showket Ahmed",
-            "email": "riyadhtayf@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
-        "php": ">=8.1",
-        "cb-master/cbm-core": "dev-main",
-        "firebase/php-jwt": "dev-main"
-    }
+        "cb-master/cbm-core": "dev-main"
+    },
+    "minimum-stability": "dev"
 }
