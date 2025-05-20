@@ -3,11 +3,13 @@
 // Deny Direct Access
 defined('ROOTPATH') || http_response_code(403).die('Direct Access Denied!');
 
-class _404
+use CBM\Core\App\Controller;
+class _404 extends Controller
 {
     public function index()
     {
         http_response_code(404);
-        echo '<h1>404 Front Not Found</h1>';
+        $this->assign('title', '404 - Page Not Found!');
+        $this->view('404');
     }
 }
