@@ -11,7 +11,7 @@ return [
     // Port
     'port' => 3306,
     // Database Name
-    'dbname' => 'your_database_name',
+    'dbname' => 'database_name',
     // Username
     'username' => 'root',
     // Password
