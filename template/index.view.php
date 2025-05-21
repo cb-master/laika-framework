@@ -66,7 +66,7 @@ defined('ROOTPATH') || http_response_code(403).die('Direct Access Denied!');
         <h1>Welcome to LAIKA Framework</h1>
         <p>Your lightweight MVC PHP framework for fast and clean development.</p>
         <a class="docs-link" href="./docs">Read the Docs</a>
-        <div class="version">Framework version: <?= $app['version'] ?></div>
+        <div class="version">Framework version: <?= $info['version'] ?></div>
     </div>
 </body>
 </html>
