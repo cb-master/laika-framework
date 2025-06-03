@@ -67,7 +67,7 @@ defined('ROOTPATH') || http_response_code(403).die('Direct Access Denied!');
     <div class="container">
         <div class="error-code">404</div>
         <div class="message">Oops! The page you're looking for doesn't exist.</div>
-        <a class="home-link" href="./">Go Back Home</a>
+        <a class="home-link" href="<?= $apphost ?>">Go Back Home</a>
         <div class="note">If you believe this is an error, please contact the site administrator.</div>
     </div>
 </body>

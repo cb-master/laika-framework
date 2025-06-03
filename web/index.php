@@ -5,7 +5,7 @@ defined('ROOTPATH') || http_response_code(403).die('Direct Access Denied!');
 
 use CBM\Core\App\Controller;
 
-class index extends Controller
+class Index extends Controller
 {
     public function index($args)
     {
