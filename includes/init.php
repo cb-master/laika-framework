@@ -19,12 +19,5 @@ ErrorHandler::register(Config::get('app', 'debug'));
 // Set Response Headers
 Response::header();
 
-// Autoload System Files
-array_map(function($folder){
-    array_map(function($file){
-        require_once $file;
-    }, Directory::files($folder, 'php'));
-}, Directory::folders(ROOTPATH.'/system'));
-
 // Load postload file if custom filters/functions/clases to load
 require_once(ROOTPATH.'/system/custom.php');
