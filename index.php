@@ -7,4 +7,4 @@ use CBM\Core\App\App;
 
 require_once ROOTPATH . '/includes/init.php';
 
-App::run();
+App::run(ROOTPATH);

@@ -13,5 +13,5 @@ class LANG
 {
     // Declaer Static Language Variables.
     
-    static $sample = "Sample Text!";
+    static $title = "Sample Title!";
 }
