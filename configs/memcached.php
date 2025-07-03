@@ -3,22 +3,20 @@
 // Deny Direct Access
 defined('ROOTPATH') || http_response_code(403).die('Direct Access Denied!');
 
+// Memcached Config
 return [
     // Driver
-    'driver'    =>  'mysql',
+    'driver'    =>  'memcached',
 
     // Host
-    'host'      =>  'localhost',
+    'host'      =>  '127.0.0.1',
 
     // Port
-    'port'      =>  3306,
+    'port'      =>  11211,
 
-    // Database Name
-    'dbname'    =>  'test',
+    // Prefix
+    'prefix'    =>  'cbm',
 
-    // Username
-    'username'  =>  'root',
-    
     // Password
     'password'  =>  ''
 ];
