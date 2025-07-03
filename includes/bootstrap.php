@@ -9,7 +9,6 @@ use CBM\Model\ConnectionManager;
 use CBM\Core\Response\Response;
 use CBM\Session\SessionManager;
 use CBM\Core\Config\Config;
-use CBM\Core\Option\Option;
 use Exception;
 
 require(__DIR__.'/../vendor/autoload.php');
@@ -23,14 +22,11 @@ ErrorHandler::register(Config::get('app', 'debug'));
 // Add Database Connection
 try{ConnectionManager::add(Config::get('database'));}catch(Exception $e){}
 
-// Set Session In DB or Not. Default is In DB
-if(Option::key('dbsession') == 'yes'){
-    try{ SessionManager::init(ConnectionManager::get()); }catch(Exception $e){}
-}else{
-    SessionManager::init();
-}
+// Initialize Session Manager
+SessionManager::init();
+
 // Set Response Headers
 Response::header();
 
 // Load postload file if custom filters/functions/clases to load
-require_once(ROOTPATH.'/system/custom.php');
+require_once(__DIR__.'/register.php');
