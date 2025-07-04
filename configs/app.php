@@ -26,5 +26,8 @@ return [
     'provider_uri' => 'https://cloudbillmaster.com',
 
     // Limit
-    'limit' =>  20
+    'limit' =>  20,
+
+    // Refresh
+    'refresh_time'   =>  300 // 5 Minutes
 ];
