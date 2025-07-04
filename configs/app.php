@@ -25,9 +25,6 @@ return [
     // Provider Website
     'provider_uri' => 'https://cloudbillmaster.com',
 
-    // System Encryption Secret
-    'secret' => '127fd90872add863c0f5f0729356be6973676d32bc26b079cbbe5c1e98768c2b',
-
     // Limit
     'limit' =>  20
 ];
