@@ -8,9 +8,15 @@
  * For the full copyright and license information, please view the LICENSE file that was distributed with this source code.
  */
 
-// Define The Base Path
-define('BASE_PATH', __DIR__);
+declare(strict_types=1);
 
-// Load Boot Loader
-// This file is responsible for loading the framework and initializing the application.
-require_once BASE_PATH . '/boot/loader.php';
+// Deny Direct Access
+defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
+
+return [
+    // Provider
+    'provider'  => 'Cloud Bill Master',
+    
+    // Debug
+    'debug' => true
+];

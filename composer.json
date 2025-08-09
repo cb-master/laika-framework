@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "CbMaster\\Lmvc\\": "app/"
+            "CBM\\App\\": "app/"
         }
     },
     "authors": [
@@ -20,6 +20,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "cb-master/lmvc-core": "dev-main"
+        "cb-master/lmvc-core": "dev-main",
+        "cb-master/php-session-handler": "dev-main",
+        "cbmaster/cbm-model": "dev-main"
     }
 }
