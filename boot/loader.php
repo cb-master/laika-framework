@@ -17,12 +17,19 @@ use CBM\Core\Http\Response;
 use CBM\Core\ErrorHandler;
 use CBM\Core\App\Router;
 use CBM\Core\Directory;
+use CBM\Core\Config;
+use CBM\Core\Uri;
 
 // Load the autoloader
 require_once BASE_PATH . '/vendor/autoload.php';
 
 // Register Error Handler
 ErrorHandler::register();
+
+// Create Secfret Config if Not Exist
+if(!Config::has('secret')) Config::set('secret', ['key'=>bin2hex(random_bytes(128))]);
+// Create Secret Key if Not Exist
+if(!Config::get('secret', 'key')) Config::updateKey('secret', 'key', bin2hex(random_bytes(128)));
 
 // Register Default Header
 Response::defaultHeader();
