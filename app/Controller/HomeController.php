@@ -10,17 +10,17 @@
 
 declare(strict_types=1);
 
-namespace CBM\App\Controllers;
+namespace CBM\App\Controller;
 
 // Deny Direct Access
 defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-use CBM\Core\App\View;
+use CBM\Core\App\Controller;
 
-class HomeController
+class HomeController Extends Controller
 {
-    public static function index()
+    public function index()
     {
-        View::render('home', ['title' => 'Welcome']);
+        $this->view('home', ['title' => 'Welcome']);
     }
 }
