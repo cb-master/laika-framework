@@ -17,14 +17,9 @@ use CBM\Core\Http\Response;
 use CBM\Core\ErrorHandler;
 use CBM\Core\App\Router;
 use CBM\Core\Directory;
-use CBM\Core\Config;
 
 // Load the autoloader
 require_once BASE_PATH . '/vendor/autoload.php';
-
-// Load the configuration files
-$configs = Directory::files(BASE_PATH.'/config', 'php');
-Config::set($configs);
 
 // Register Error Handler
 ErrorHandler::register();
