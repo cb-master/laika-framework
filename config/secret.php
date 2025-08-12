@@ -13,17 +13,7 @@ declare(strict_types=1);
 // Deny Direct Access
 defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-/**
- * Start Register Routers From Here
- * 
- * ###### Sample: #######
- * $router->get('/sample', 'SampleController@index');
- * 
- * ##### With Middleware #####
- * $router->get('/sample', 'SampleController@index', [CBM\App\Middleware\SampleMiddleware::class]);
- * 
- * ##### Post Request #####
- * $router->post('/sample', 'SampleController@index');
- */
-
-$router->get('/', 'HomeController@index');
+return [
+    // Secret Ket
+    'key' => 'c6d924b7f9c7736539eea6d99ddcc7cab0defb020134b7bff05573f2c38ae2db3d8b54a08d9ae944ee5ec2060f443c5d781daea0c2dad1e398fad7f2cbcf52a9d88f3e44cb32241473f1f5d152ce25373951b8be07bda58c72d691f30e4adf5a0f175b70ede30b8166facb190087acfdacc08802ff748e6492c4066f1f60a9a0'
+];

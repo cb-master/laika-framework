@@ -29,6 +29,8 @@ Response::defaultHeader();
 
 // Load Router
 $router = new Router();
+// Initiate Default Database
+$router->addGlobalMiddleware(CBM\App\Middleware\DbConnectionMiddleware::class);
 
 // Require all route files
 // This will load all PHP files in the app/Routes directory

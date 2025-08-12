@@ -14,8 +14,16 @@ declare(strict_types=1);
 defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
 return [
-        'host' => 'localhost',
-        'name' => 'your_db',
-        'user' => 'root',
-        'pass' => '',
-    ];
+        // Driver
+    'driver' => 'mysql',
+    // Host
+    'host' => 'localhost',
+    // Port
+    'port' => 3306,
+    // Database Name
+    'dbname' => 'test',
+    // Username
+    'username' => 'root',
+    // Password
+    'password' => ''
+];

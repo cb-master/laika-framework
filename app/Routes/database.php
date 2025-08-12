@@ -13,17 +13,17 @@ declare(strict_types=1);
 // Deny Direct Access
 defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-/**
- * Start Register Routers From Here
- * 
- * ###### Sample: #######
- * $router->get('/sample', 'SampleController@index');
- * 
- * ##### With Middleware #####
- * $router->get('/sample', 'SampleController@index', [CBM\App\Middleware\SampleMiddleware::class]);
- * 
- * ##### Post Request #####
- * $router->post('/sample', 'SampleController@index');
- */
-
-$router->get('/', 'HomeController@index');
+return [
+    // Driver
+    'driver' => 'mysql',
+    // Host
+    'host' => 'localhost',
+    // Port
+    'port' => 3306,
+    // Database Name
+    'dbname' => 'cbm',
+    // Username
+    'username' => 'root',
+    // Password
+    'password' => 'T@zwar127169'
+];
