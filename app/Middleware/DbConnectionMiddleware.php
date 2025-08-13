@@ -32,5 +32,12 @@ class DbConnectionMiddleware
         try {
             ConnectionManager::add(Config::get('database'));
         } catch (\Throwable $th) {}
+
+        /**
+         * Another Connection if Required. Second Parameter Could be 'read', 'write' or anything
+         */
+        // try {
+        //     ConnectionManager::add(Config::get('database'), 'read');
+        // } catch (\Throwable $th) {}
     }
 }

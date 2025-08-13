@@ -32,20 +32,15 @@ if(!Config::has('secret')) Config::set('secret', ['key'=>bin2hex(random_bytes(12
 if(!Config::get('secret', 'key')) Config::updateKey('secret', 'key', bin2hex(random_bytes(128)));
 
 // Register Default Header
-Response::defaultHeader();
-
-// Load Router
-$router = new Router();
-// Initiate Default Database
-$router->addGlobalMiddleware(CBM\App\Middleware\DbConnectionMiddleware::class);
+Response::register();
 
 // Require all route files
 // This will load all PHP files in the app/Routes directory
 // and register their routes with the router
 $routes = Directory::files(BASE_PATH . '/app/Routes', 'php');
-array_map(function($route) use ($router){ // Use $router in the closure to register routes
+array_map(function($route){
     require_once $route;
 }, $routes);
 
 // Dispatch Router
-$router->dispatch();
+Router::dispatch();

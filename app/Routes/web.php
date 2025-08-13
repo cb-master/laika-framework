@@ -13,17 +13,22 @@ declare(strict_types=1);
 // Deny Direct Access
 defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
+use CBM\Core\App\Router;
+
+// Register Global Database Connection
+Router::addGlobalMiddleware(CBM\App\Middleware\DbConnectionMiddleware::class);
+
 /**
  * Start Register Routers From Here
  * 
  * ###### Sample: #######
- * $router->get('/sample', 'SampleController@index');
+ * Router::get('/sample', 'SampleController@index');
  * 
  * ##### With Middleware #####
- * $router->get('/sample', 'SampleController@index', [CBM\App\Middleware\SampleMiddleware::class]);
+ * Router::get('/sample', 'SampleController@index', [CBM\App\Middleware\SampleMiddleware::class]);
  * 
  * ##### Post Request #####
- * $router->post('/sample', 'SampleController@index');
+ * Router::post('/sample', 'SampleController@index');
  */
 
-$router->get('/', 'HomeController@index');
+Router::get('/', 'HomeController@index');
