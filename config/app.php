@@ -15,7 +15,7 @@ defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!')
 
 return [
     // Provider
-    'provider'  => 'Cloud Bill Master',
+    'provider'  => 'Cloud Bill Manager',
     
     // Debug
     'debug' => true

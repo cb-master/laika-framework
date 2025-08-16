@@ -31,4 +31,5 @@ Router::addGlobalMiddleware(CBM\App\Middleware\DbConnectionMiddleware::class);
  * Router::post('/sample', 'SampleController@index');
  */
 
-Router::get('/', 'HomeController@index');
+Router::get('/', 'HomeController@without_template_engine');
+Router::get('/template', 'HomeController@with_template_engine');
