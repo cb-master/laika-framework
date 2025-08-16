@@ -31,29 +31,6 @@ composer create-project cb-master/lmvc
 ```
 [Read More...](https://github.com/cb-master/lmvc/wiki/Installation)
 
-## Project Structure
-lmvc/
-│── app/
-│   ├── Controller/
-│   ├── Middleware/
-│   ├── Model/
-│   ├── Routes/
-│   ├── Views/
-│   └── ...
-│── boot/
-│   ├── loader.php
-│   └──
-│── config/
-│   ├── app.php
-│   ├── database.php
-│   ├── memcached.php
-│   ├── redis.php
-│   └── ...
-│── storage/
-│   └── ...
-│── composer.json
-│── index.php
-
 ## 📦 Configuration
 - [Configure Database](https://github.com/cb-master/lmvc/wiki/Configuration#database)
 - [Configure Session](https://github.com/cb-master/lmvc/wiki/Configuration#session)
