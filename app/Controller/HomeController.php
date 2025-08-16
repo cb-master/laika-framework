@@ -16,11 +16,31 @@ namespace CBM\App\Controller;
 defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
 use CBM\Core\App\Controller;
+use CBM\Core\Template;
 
 class HomeController Extends Controller
 {
-    public function index()
+    public function without_template_engine()
     {
-        $this->view('home', ['title' => 'Welcome']);
+        /**
+         * Using Without Template Engine Compile View File
+         */
+        // Set Data
+        $data = ['title'=>'Home'];
+        // load View File
+        $this->view('home', $data);
+    }
+
+    public function with_template_engine()
+    {
+        /**
+         * Using Template Engine Compile View File
+         */
+        // Get Template Engine
+        $tpl = new Template();
+        // Assign Data
+        $tpl->assign('title', 'Home');
+        // Load View File
+        $tpl->render('home-without-engine');
     }
 }
