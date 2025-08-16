@@ -41,4 +41,4 @@ composer create-project cb-master/lmvc
 - [Create View](https://github.com/cb-master/lmvc/wiki/Configuration#view)
 - [Using Template Engine](https://github.com/cb-master/lmvc/wiki/Configuration#template-engine)
 
-Or visit the [Configuration Page](https://github.com/cb-master/lmvc/wiki/Configuration)
+Or visit the [Configuration Wiki Page](https://github.com/cb-master/lmvc/wiki/Configuration)
