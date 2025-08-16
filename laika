@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Laika PHP MVC Framework
+ * Author: Showket Ahmed
+ * Email: riyadhtayf@gmail.com
+ * License: MIT
+ * This file is part of the Laika PHP MVC Framework.
+ * For the full copyright and license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+// Define The Base Path
+define('BASE_PATH', __DIR__);
+
+// Use Console
+use CBM\Core\Console\Runner;
+
+if(strtolower(PHP_SAPI) !== 'cli'){
+    echo 'Require Terminal To Run Laika CLI!';
+    die;
+}
+
+require_once(BASE_PATH.'/vendor/autoload.php');
+
+Runner::run($argv);
