@@ -1,5 +1,7 @@
 vendor/
 logs/
+cache/
+storage/
 config/secret.php
 composer.phar
 composer.lock
