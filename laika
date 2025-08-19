@@ -17,7 +17,7 @@ use CBM\Core\Console\Runner;
 
 if(strtolower(PHP_SAPI) !== 'cli'){
     echo 'Require Terminal To Run Laika CLI!';
-    die;
+    die();
 }
 
 require_once(BASE_PATH.'/vendor/autoload.php');

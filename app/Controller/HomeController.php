@@ -41,6 +41,6 @@ class HomeController Extends Controller
         // Assign Data
         $tpl->assign('title', 'Home');
         // Load View File
-        $tpl->render('home-without-engine');
+        $tpl->render('home-with-engine');
     }
 }
