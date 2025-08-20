@@ -20,6 +20,14 @@ use CBM\Core\Config;
 
 class DbConnectionMiddleware
 {
+    // Parameters
+    private array $params;
+
+    public function __construct(array $params = [])
+    {
+        $this->params = $params;
+    }
+
     // Initiate Database Connection
     public function handle()
     {
@@ -30,7 +38,7 @@ class DbConnectionMiddleware
         // This is Default Connection Manager
         // To Add More Connection add ConnectionManager::add(Config::get('database'), 'any_name');
         try {
-            ConnectionManager::add(Config::get('database'));
+            ConnectionManager::add(Config::get('database', $this->params['name'] ?? 'default'));
         } catch (\Throwable $th) {}
 
         /**
