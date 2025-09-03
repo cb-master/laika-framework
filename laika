@@ -13,7 +13,7 @@
 define('BASE_PATH', __DIR__);
 
 // Use Console
-use CBM\Core\Console\Runner;
+use CBM\Core\Console\Kernel;
 
 if(strtolower(PHP_SAPI) !== 'cli'){
     echo 'Require Terminal To Run Laika CLI!';
@@ -22,4 +22,6 @@ if(strtolower(PHP_SAPI) !== 'cli'){
 
 require_once(BASE_PATH.'/vendor/autoload.php');
 
-Runner::run($argv);
+
+$kernel = new Kernel($argv);
+$kernel->handle();
