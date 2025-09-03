@@ -15,9 +15,6 @@ defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!')
 
 use CBM\Core\App\Router;
 
-// Register Global Database Connection
-Router::addGlobalMiddleware(CBM\App\Middleware\DbConnectionMiddleware::class);
-
 /**
  * Start Register Routers From Here
  * 
