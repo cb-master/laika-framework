@@ -13,12 +13,7 @@ declare(strict_types=1);
 // Deny Direct Access
 defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-use CBM\Core\Http\Response;
-use CBM\Core\ErrorHandler;
-use CBM\Core\App\Router;
-use CBM\Core\Directory;
-use CBM\Core\Config;
-use CBM\Core\Uri;
+use CBM\Core\{Directory, Config, ErrorHandler, App\Router, Http\Response};
 
 // Load the autoloader
 require_once BASE_PATH . '/vendor/autoload.php';
