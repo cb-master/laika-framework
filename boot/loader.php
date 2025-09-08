@@ -32,7 +32,7 @@ Response::register();
 // Require all route files
 // This will load all PHP files in the app/Routes directory
 // and register their routes with the router
-$routes = Directory::files(BASE_PATH . '/app/Routes', 'php');
+$routes = Directory::files(BASE_PATH . '/Routes', 'php');
 array_map(function($route){
     require_once $route;
 }, $routes);
