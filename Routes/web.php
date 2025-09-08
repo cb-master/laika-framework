@@ -28,5 +28,5 @@ use CBM\Core\App\Router;
  * Router::post('/sample', 'SampleController@index');
  */
 
-Router::get('/', 'HomeController@without_template_engine');
-Router::get('/template', 'HomeController@with_template_engine');
+Router::get('/', 'HomeController@index');
+Router::get('/template', 'HomeController@tplIndex');
