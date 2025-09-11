@@ -21,10 +21,10 @@ require_once BASE_PATH . '/vendor/autoload.php';
 // Register Error Handler
 ErrorHandler::register();
 
-// Create Secfret Config if Not Exist
-if(!Config::has('secret')) Config::set('secret', ['key'=>bin2hex(random_bytes(128))]);
-// Create Secret Key if Not Exist
-if(!Config::get('secret', 'key')) Config::updateKey('secret', 'key', bin2hex(random_bytes(128)));
+// Create Secret Config File if Not Exist
+if(!Config::has('secret')) Config::create('secret', ['key'=>bin2hex(random_bytes(32))]);
+// Create Secret Key Value Not Exist
+if(!Config::has('secret', 'key')) Config::set('secret', 'key', bin2hex(random_bytes(32)));
 
 // Register Default Header
 Response::register();
