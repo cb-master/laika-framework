@@ -29,13 +29,15 @@ if(!Config::has('secret', 'key')) Config::set('secret', 'key', bin2hex(random_by
 // Register Default Header
 Response::register();
 
+// Register All Functions and Filters
+$paths = Directory::scanRecursive(BASE_PATH . '/helpers', false, 'php');
+array_map(function ($path) { require $path; }, $paths);
+
 // Require all route files
 // This will load all PHP files in the app/Routes directory
 // and register their routes with the router
 $routes = Directory::files(BASE_PATH . '/Routes', 'php');
-array_map(function($route){
-    require_once $route;
-}, $routes);
+array_map(function ($route) { require_once $route; }, $routes);
 
 // Dispatch Router
 Router::dispatch();
