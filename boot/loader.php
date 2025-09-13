@@ -15,29 +15,83 @@ defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!')
 
 use CBM\Core\{Directory, Config, ErrorHandler, App\Router, Http\Response};
 
-// Load the autoloader
+################################################################
+// ----------------------- AUTOLOADER ----------------------- //
+################################################################
+/**
+ * Load The Autoloader
+ */
 require_once BASE_PATH . '/vendor/autoload.php';
+################################################################
 
+
+
+################################################################
+// ----------------- REGISTER ERROR HANDLER ----------------- //
+################################################################
 // Register Error Handler
 ErrorHandler::register();
+################################################################
 
-// Create Secret Config File if Not Exist
+
+
+################################################################
+// ---------------------- SECRET KEY ------------------------ //
+################################################################
+/**
+ * Create Secret Config File if Not Exist
+ */
 if(!Config::has('secret')) Config::create('secret', ['key'=>bin2hex(random_bytes(32))]);
-// Create Secret Key Value Not Exist
+/**
+ * Create Secret Key Value Not Exist
+ */
 if(!Config::has('secret', 'key')) Config::set('secret', 'key', bin2hex(random_bytes(32)));
+################################################################
 
-// Register Default Header
+
+
+################################################################
+// -------------------- REGISTER HEADER --------------------- //
+################################################################
+/**
+ * Register Default Header
+ */
 Response::register();
+################################################################
 
-// Register All Functions and Filters
-$paths = Directory::scanRecursive(BASE_PATH . '/helpers', false, 'php');
+
+
+################################################################
+// ----------------- AUTOLOAD HELPER FILES ------------------ //
+################################################################
+/**
+ * Register All Functions, Filters, Constants etc
+ * Make 'helpers' Path if Not Available
+ */
+$helpers_path = BASE_PATH . '/helpers';
+Directory::make($helpers_path);
+$paths = Directory::scanRecursive($helpers_path, false, 'php');
 array_map(function ($path) { require $path; }, $paths);
+################################################################
 
-// Require all route files
-// This will load all PHP files in the app/Routes directory
-// and register their routes with the router
+
+
+################################################################
+// ------------------- REGISTER ROUTERS --------------------- //
+################################################################
+/**
+ * Require All Route Files
+ * This Will Load All PHP Files in The app/Routes Directory
+ * and Register Their Routes With The Router
+ */
 $routes = Directory::files(BASE_PATH . '/Routes', 'php');
 array_map(function ($route) { require_once $route; }, $routes);
+################################################################
 
-// Dispatch Router
+
+
+################################################################
+// ------------------- DISPATCH ROUTERS --------------------- //
+################################################################
 Router::dispatch();
+################################################################
