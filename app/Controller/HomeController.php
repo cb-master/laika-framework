@@ -19,27 +19,38 @@ use CBM\Core\{App\Controller, Template};
 
 class HomeController Extends Controller
 {
-    public function index()
+    /**
+    * Args contains Request Object and Other Route Parameters
+    */
+    public function index($args)
     {
+        // Args contains Request Object and other route parameters
         /**
          * Using Without Template Engine Compile View File
          */
         // Set Data
         $data = ['title'=>'Home'];
+
         // load View File
-        $this->view('home', $data);
+        $this->view('home', array_merge($data, $args));
     }
 
-    public function tplIndex()
+    /**
+    * Args contains Request Object and Other Route Parameters
+    */
+    public function tplIndex($args)
     {
         /**
          * Using Template Engine Compile View File
          */
         // Get Template Engine
         $tpl = new Template();
+
         // Assign Data
         $tpl->assign('title', 'Home');
+        $tpl->assign($args);
+
         // Load View File
-        $tpl->render('tplhome');
+        $tpl->render('tpl-home');
     }
 }
