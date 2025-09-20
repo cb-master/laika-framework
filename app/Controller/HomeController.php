@@ -29,10 +29,13 @@ class HomeController Extends Controller
          * Using Without Template Engine Compile View File
          */
         // Set Data
-        $data = ['title'=>'Home'];
+        $this->assign('title', 'Home');
+
+        // Assign Default Args
+        $this->assign($args);
 
         // load View File
-        $this->view('home', array_merge($data, $args));
+        $this->view('home');
     }
 
     /**
@@ -48,9 +51,11 @@ class HomeController Extends Controller
 
         // Assign Data
         $tpl->assign('title', 'Home');
-        $tpl->assign($args);
 
+        // Assign Default Args
+        $tpl->assign($args);
+        
         // Load View File
-        $tpl->render('tpl-home');
+        $tpl->view('tpl-home');
     }
 }
