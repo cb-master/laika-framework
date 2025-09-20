@@ -9,7 +9,7 @@
  */
 
 // Define The Base Path
-define('BASE_PATH', __DIR__);
+define('BASE_PATH', realpath(__DIR__));
 
 // Load Boot Loader
 // This file is responsible for loading the framework and initializing the application.

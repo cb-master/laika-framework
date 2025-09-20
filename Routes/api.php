@@ -13,4 +13,22 @@ declare(strict_types=1);
 // Deny Direct Access
 defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-// $router is a default object in this file
+use CBM\Core\App\Router;
+
+// Start Register API Routers From Here
+// ###### Sample: #######
+// Router::get('/sample', 'SampleController@index');
+// ##### With Middleware #####
+// Router::get('/sample', 'SampleController@index', [CBM\App\Middleware\SampleMiddleware::class]);
+// ##### Post Request #####
+// Router::post('/sample', 'SampleController@index');
+
+Router::get('/status', function() {
+    header('Content-Type: application/json');
+    echo json_encode(['status' => 'API is Working With Get Method']);
+});
+
+Router::put('/status', function() {
+    header('Content-Type: application/json');
+    echo json_encode(['status' => 'API is Working With Put Method']);
+});
