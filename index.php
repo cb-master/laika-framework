@@ -9,8 +9,11 @@
  */
 
 // Define The Base Path
-define('BASE_PATH', realpath(__DIR__));
+define('APP_PATH', __DIR__);
 
 // Load Boot Loader
 // This file is responsible for loading the framework and initializing the application.
-require_once BASE_PATH . '/boot/loader.php';
+require_once APP_PATH . '/lf-boot/loader.php';
+// Load Routes
+// This file is responsible for defining the application routes.
+require_once APP_PATH . '/lf-boot/routes.php';

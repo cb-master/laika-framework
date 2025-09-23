@@ -11,11 +11,20 @@
 declare(strict_types=1);
 
 // Deny Direct Access
-defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
+defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
 return [
     // Provider
-    'provider'  => 'Cloud Bill Manager',
+    'provider'      => 'Laika Framework',
+
+    // Version
+    'version'       => '1.0.0',
+
+    // Provider_url
+    'provider_url'  => 'https://laikaframework.com',
+
+    // Docs_url
+    'docs_url'      => 'https://docs.laikaframework.com',
     
     // Debug
     'debug' => true

@@ -10,8 +10,9 @@
 
 declare(strict_types=1);
 
-// Deny Direct Access
-defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
+
+// Define App Path
+defined('APP_PATH') || define('APP_PATH', realpath(__DIR__.'/../'));
 
 use CBM\Core\{Directory, Config, ErrorHandler, App\Router, Http\Response};
 
@@ -21,7 +22,7 @@ use CBM\Core\{Directory, Config, ErrorHandler, App\Router, Http\Response};
 /**
  * Load The Autoloader
  */
-require_once BASE_PATH . '/vendor/autoload.php';
+require_once APP_PATH . '/vendor/autoload.php';
 ################################################################
 
 
@@ -68,7 +69,7 @@ Response::register();
  * Register All Functions, Filters, Constants etc
  * Make 'helpers' Path if Not Available
  */
-$helpers_path = BASE_PATH . '/helpers';
+$helpers_path = APP_PATH . '/lf-helpers';
 Directory::make($helpers_path);
 $paths = Directory::scanRecursive($helpers_path, false, 'php');
 array_map(function ($path) { require $path; }, $paths);
@@ -76,22 +77,22 @@ array_map(function ($path) { require $path; }, $paths);
 
 
 
-################################################################
-// ------------------- REGISTER ROUTERS --------------------- //
-################################################################
-/**
- * Require All Route Files
- * This Will Load All PHP Files in The app/Routes Directory
- * and Register Their Routes With The Router
- */
-$routes = Directory::files(BASE_PATH . '/Routes', 'php');
-array_map(function ($route) { require_once $route; }, $routes);
-################################################################
+// ################################################################
+// // ------------------- REGISTER ROUTERS --------------------- //
+// ################################################################
+// /**
+//  * Require All Route Files
+//  * This Will Load All PHP Files in The app/Routes Directory
+//  * and Register Their Routes With The Router
+//  */
+// $routes = Directory::files(APP_PATH . '/../lf-routes', 'php');
+// array_map(function ($route) { require_once $route; }, $routes);
+// ################################################################
 
 
 
-################################################################
-// ------------------- DISPATCH ROUTERS --------------------- //
-################################################################
-Router::dispatch();
-################################################################
+// ################################################################
+// // ------------------- DISPATCH ROUTERS --------------------- //
+// ################################################################
+// Router::dispatch();
+// ################################################################

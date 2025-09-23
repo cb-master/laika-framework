@@ -11,7 +11,7 @@
 declare(strict_types=1);
 
 // Deny Direct Access
-defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
+defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
 use CBM\Core\App\Router;
 
@@ -27,6 +27,7 @@ use CBM\Core\App\Router;
  * ##### Post Request #####
  * Router::post('/sample', 'SampleController@index');
  */
+// Router::get('/', 'HomeController@index');
 
-Router::get('/', 'HomeController@index');
-Router::get('/template', 'HomeController@tplIndex');
+Router::get('/', 'HomeController@index')->middleware(CBM\App\Middleware\DbConnectionMiddleware::class);
+Router::get('/template', 'HomeController@tplIndex')->middleware(CBM\App\Middleware\DbConnectionMiddleware::class);
