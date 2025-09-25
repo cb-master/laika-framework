@@ -1,6 +1,7 @@
 {
     "name": "cb-master/lmvc",
     "description": "Laika PHP Framework",
+    "version": "2.0.0",
     "type": "project",
     "license": "MIT",
     "autoload": {
