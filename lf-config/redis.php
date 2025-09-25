@@ -10,15 +10,21 @@
 
 declare(strict_types=1);
 
-namespace CBM\App\Model;
+// Deny Direct Access
+defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-use CBM\Core\App\Model;
+// Redis Config
 
-class Options Extends Model
-{
-    // Table
-    protected string $table = 'options';
+return [    
+    // Host
+    'host'      =>  '127.0.0.1',
 
-    // ID
-    protected string $id = 'opt_id';
-}
+    // Port
+    'port'      =>  6379,
+
+    // Prefix
+    'prefix'    =>  'cbm',
+    
+    // Password
+    'password'  =>  ''
+];

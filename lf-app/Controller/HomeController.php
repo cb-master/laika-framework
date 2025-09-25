@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace CBM\App\Controller;
 
 // Deny Direct Access
-defined('BASE_PATH') || http_response_code(403).die('403 Direct Access Denied!');
+defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
 use CBM\Core\{App\Controller, Template};
 
@@ -29,7 +29,8 @@ class HomeController Extends Controller
          * Using Without Template Engine Compile View File
          */
         // Set Data
-        $this->assign('title', 'Home');
+        $this->assign('title', 'Laika Framework');
+        $this->assign('welcome', 'Welcome to Laika PHP MVC Framework!');
 
         // Assign Default Args
         $this->assign($args);
@@ -51,6 +52,7 @@ class HomeController Extends Controller
 
         // Assign Data
         $tpl->assign('title', 'Home');
+        $tpl->assign('welcome', 'Welcome to Laika PHP MVC Framework!');
 
         // Assign Default Args
         $tpl->assign($args);

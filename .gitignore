@@ -1,7 +1,8 @@
 vendor/
-logs/
-cache/
-storage/
-config/secret.php
+lf-logs/
+lf-cache/
+lf-storage/
+lf-config/secret.php
+lf-config/database.php
 composer.phar
 composer.lock
