@@ -28,9 +28,9 @@ return [
             'dbname' => 'test',
 
             // Username
-            'username' => 'cbm',
+            'username' => 'root',
             
             // Password
-            'password' => 'T@zwar127169'
+            'password' => ''
         ]
 ];

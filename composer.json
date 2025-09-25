@@ -21,6 +21,6 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=8.1",
-        "cb-master/lmvc-core": "dev-main"
+        "cb-master/lmvc-core": "dev-beta"
     }
 }

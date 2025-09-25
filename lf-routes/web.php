@@ -28,6 +28,5 @@ use CBM\Core\App\Router;
  * Router::post('/sample', 'SampleController@index');
  */
 // Router::get('/', 'HomeController@index');
-
-Router::get('/', 'HomeController@index')->middleware(CBM\App\Middleware\DbConnectionMiddleware::class);
-Router::get('/template', 'HomeController@tplIndex')->middleware(CBM\App\Middleware\DbConnectionMiddleware::class);
+Router::get('/', 'HomeController@index')->middleware(CBM\App\Middleware\InitiateDB::class);
+Router::get('/template', 'HomeController@tplIndex')->middleware(CBM\App\Middleware\InitiateDB::class);

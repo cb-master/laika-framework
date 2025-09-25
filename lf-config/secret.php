@@ -15,6 +15,6 @@ defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
 return [
     // Key
-    'key' => '3eb65f66b1d5b37c04432401a56dc09571d7a509061e67de3a92ab2220e64c95',
+    'key' => 'd70cf099c18dd8cac5ce34bbc415d5e334eee4b71f027032b0883cf44a860954',
 
     ];

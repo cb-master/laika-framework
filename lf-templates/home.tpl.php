@@ -8,14 +8,11 @@ defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
     <meta charset="UTF-8">
     <title><?= $title ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= apply_filter('load_asset', '/asset/css/style.css', true) ?>">
+    <link rel="stylesheet" href="<?= apply_filter('load_asset', 'css/style.css') ?>">
 </head>
 <body>
     <div class="container">
         <h1><?= $welcome ?></h1>
-        <form method='post'>
-            <input type="submit" value="Click me">
-        </form>
         <p>Your lightweight MVC PHP framework for fast and clean development.</p>
         <a class="docs-link" href="<?= $app_info['docs_url'] ?>">Read the Docs</a>
         <div class="version">Framework version: <?= $app_info['version'] ?></div>

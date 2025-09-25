@@ -70,29 +70,11 @@ Response::register();
  * Make 'helpers' Path if Not Available
  */
 $helpers_path = APP_PATH . '/lf-helpers';
+
+// Create Directory if Not Exists
 Directory::make($helpers_path);
+
+// Load Helpers
 $paths = Directory::scanRecursive($helpers_path, false, 'php');
 array_map(function ($path) { require $path; }, $paths);
 ################################################################
-
-
-
-// ################################################################
-// // ------------------- REGISTER ROUTERS --------------------- //
-// ################################################################
-// /**
-//  * Require All Route Files
-//  * This Will Load All PHP Files in The app/Routes Directory
-//  * and Register Their Routes With The Router
-//  */
-// $routes = Directory::files(APP_PATH . '/../lf-routes', 'php');
-// array_map(function ($route) { require_once $route; }, $routes);
-// ################################################################
-
-
-
-// ################################################################
-// // ------------------- DISPATCH ROUTERS --------------------- //
-// ################################################################
-// Router::dispatch();
-// ################################################################

@@ -18,16 +18,16 @@ use CBM\Core\{Directory, App\Router};
 ################################################################
 // -------------------- LOAD ROUTES ------------------------- //
 ################################################################
-// Load All Config Files
+// Load All Routes Files
 $routes = Directory::files(APP_PATH . '/lf-routes', 'php');
 array_map(function ($route) { require_once $route; }, $routes);
 ################################################################
 
 
 ################################################################
-// -------------------- LOAD RESOURCES ---------------------- //
+// -------------------- LOAD RESOURCE ---------------------- //
 ################################################################
-Router::get('/assets/{path:.+}', function($path) {
+Router::get('/resource/{path:.+}', function($path) {
     // Trim leading/trailing slashes
     $path = trim($path, '/');
 
@@ -43,31 +43,16 @@ Router::get('/assets/{path:.+}', function($path) {
         'webp'  =>  'image/webp',
     ];
 
-    // Custom Assets Path
-    $path = str_replace('resource', 'assets', $path);
-    $file = realpath(APP_PATH."/{$path}");
-    if($file && is_file($file)){
-        $ext = pathinfo($file, PATHINFO_EXTENSION);
-        if (array_key_exists($ext, $types)) header("Content-Type: {$types[$ext]}");
-        readfile($file);
+    // Get Asset File Path
+    $file = realpath(APP_PATH."/lf-templates/{$path}") ?: APP_PATH . "/lf-assets/{$path}";
+    if(!file_exists($file)){
+        http_response_code(404);
         return;
     }
 
-    // System Assets Path
-    $file = APP_PATH . '/lf-assets/' . $path;
-    if (file_exists($file)) {
-        $ext = pathinfo($file, PATHINFO_EXTENSION);
-        if (array_key_exists($ext, $types)) header("Content-Type: {$types[$ext]}");
-        readfile($file);
-        return;
-    }
-    http_response_code(404);
+    // Read File
+    $ext = pathinfo($file, PATHINFO_EXTENSION);
+    if (array_key_exists($ext, $types)) header("Content-Type: {$types[$ext]}");
+    readfile($file);
     return;
 });
-
-
-################################################################
-// ------------------- DISPATCH ROUTERS --------------------- //
-################################################################
-Router::dispatch();
-################################################################

@@ -18,30 +18,18 @@ defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 use CBM\Model\ConnectionManager;
 use CBM\Core\Config;
 
-class DbConnectionMiddleware
+class InitiateDB
 {
-    // Initiate Database Connection
-    public function handle()
-    {
-        /**
-         * This is Default Connection Manager
-         * To Add More Connection add ConnectionManager::add(Config::get('database'), 'any_name');
-         */
-        // This is Default Connection Manager
-        // To Add More Connection add ConnectionManager::add(Config::get('database'), 'any_name');
+    // Initiate DB
+    public function __construct(){
         try {
             // Return if already connected
             if(ConnectionManager::has('default')) return;
             // Add Connection
             ConnectionManager::add(Config::get('database', 'default'));
         } catch (\Throwable $th) {}
-
-        /**
-         * Another Connection if Required. Second Parameter Could be 'read', 'write' or anything
-         */
-        // try {
-        //     if(ConnectionManager::has('read')) return;
-        //     ConnectionManager::add(Config::get('database', 'read'), 'read');
-        // } catch (\Throwable $th) {}
     }
+
+    // Handle
+    public function handle($args){}
 }
