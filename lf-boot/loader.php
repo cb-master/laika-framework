@@ -14,14 +14,11 @@ declare(strict_types=1);
 // Define App Path
 defined('APP_PATH') || define('APP_PATH', realpath(__DIR__.'/../'));
 
-use CBM\Core\{Directory, Config, ErrorHandler, App\Router, Http\Response};
+use CBM\Core\{Directory, Config, ErrorHandler, Http\Response};
 
 ################################################################
 // ----------------------- AUTOLOADER ----------------------- //
 ################################################################
-/**
- * Load The Autoloader
- */
 require_once APP_PATH . '/vendor/autoload.php';
 ################################################################
 
@@ -59,7 +56,6 @@ if(!Config::has('secret', 'key')) Config::set('secret', 'key', bin2hex(random_by
  */
 Response::register();
 ################################################################
-
 
 
 ################################################################
