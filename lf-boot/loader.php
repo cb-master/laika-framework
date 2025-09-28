@@ -71,6 +71,6 @@ $hooks_path = APP_PATH . '/lf-hooks';
 Directory::make($hooks_path);
 
 // Load Helpers
-$paths = Directory::scanRecursive($helpers_path, false, 'php');
+$paths = Directory::scanRecursive($hooks_path, false, 'php');
 array_map(function ($path) { require $path; }, $paths);
 ################################################################
