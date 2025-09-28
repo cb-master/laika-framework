@@ -10,14 +10,15 @@
 
 declare(strict_types=1);
 
+// Namespace
 namespace CBM\App\Controller;
 
 // Deny Direct Access
 defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-use CBM\Core\{App\Controller, Template};
+use CBM\Core\App\Template;
 
-class HomeController Extends Controller
+class HomeTemplateController Extends Template
 {
     /**
     * Args contains Request Object and Other Route Parameters
@@ -28,11 +29,12 @@ class HomeController Extends Controller
         /**
          * Using Without Template Engine Compile View File
          */
-        // Set Data
-        $this->assign('title', 'Laika Framework');
+        // Assign Data
+        $this->assign('title', 'Home');
+        // Assign Data
         $this->assign('welcome', 'Welcome to Laika PHP MVC Framework!');
-
+        
         // load View File
-        $this->view('home');
+        $this->view('tpl-home');
     }
 }
