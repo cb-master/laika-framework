@@ -65,10 +65,10 @@ Response::register();
  * Register All Functions, Filters, Constants etc
  * Make 'helpers' Path if Not Available
  */
-$helpers_path = APP_PATH . '/lf-helpers';
+$hooks_path = APP_PATH . '/lf-hooks';
 
 // Create Directory if Not Exists
-Directory::make($helpers_path);
+Directory::make($hooks_path);
 
 // Load Helpers
 $paths = Directory::scanRecursive($helpers_path, false, 'php');
