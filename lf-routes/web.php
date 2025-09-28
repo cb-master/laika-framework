@@ -29,4 +29,4 @@ use CBM\Core\App\Router;
  */
 // Router::get('/', 'HomeController@index');
 Router::get('/', 'HomeController@index')->middleware(CBM\App\Middleware\InitiateDB::class);
-Router::get('/template', 'HomeController@tplIndex')->middleware(CBM\App\Middleware\InitiateDB::class);
+Router::get('/template', 'HomeTemplateController@index')->middleware(CBM\App\Middleware\InitiateDB::class);

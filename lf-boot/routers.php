@@ -18,14 +18,13 @@ use CBM\Core\{Directory, App\Router};
 ################################################################
 // -------------------- LOAD ROUTES ------------------------- //
 ################################################################
-// Load All Routes Files
 $routes = Directory::files(APP_PATH . '/lf-routes', 'php');
 array_map(function ($route) { require_once $route; }, $routes);
 ################################################################
 
 
 ################################################################
-// -------------------- LOAD RESOURCE ---------------------- //
+// -------------------/- LOAD RESOURCE ---------------------- //
 ################################################################
 Router::get('/resource/{path:.+}', function($path) {
     // Trim leading/trailing slashes
@@ -41,6 +40,7 @@ Router::get('/resource/{path:.+}', function($path) {
         'gif'   =>  'image/gif',
         'svg'   =>  'image/svg+xml',
         'webp'  =>  'image/webp',
+        'ico'   =>  'image/x-icon',
     ];
 
     // Get Asset File Path
@@ -52,7 +52,7 @@ Router::get('/resource/{path:.+}', function($path) {
 
     // Read File
     $ext = pathinfo($file, PATHINFO_EXTENSION);
-    if (array_key_exists($ext, $types)) header("Content-Type: {$types[$ext]}");
+    if (array_key_exists(strtolower($ext), $types)) header("Content-Type: {$types[$ext]}");
     readfile($file);
     return;
 });

@@ -21,10 +21,10 @@ return [
     'version'       => '2.0.0',
 
     // Provider_url
-    'provider_url'  => 'https://laikaframework.com',
+    'url.provider'  => 'https://laikaframework.com',
 
     // Docs_url
-    'docs_url'      => 'https://docs.laikaframework.com',
+    'url.doc'       => 'https://docs.laikaframework.com',
     
     // Debug
     'debug' => true

@@ -14,14 +14,11 @@ declare(strict_types=1);
 // Define App Path
 defined('APP_PATH') || define('APP_PATH', realpath(__DIR__.'/../'));
 
-use CBM\Core\{Directory, Config, ErrorHandler, App\Router, Http\Response};
+use CBM\Core\{Directory, Config, ErrorHandler, Http\Response};
 
 ################################################################
 // ----------------------- AUTOLOADER ----------------------- //
 ################################################################
-/**
- * Load The Autoloader
- */
 require_once APP_PATH . '/vendor/autoload.php';
 ################################################################
 
@@ -61,7 +58,6 @@ Response::register();
 ################################################################
 
 
-
 ################################################################
 // ----------------- AUTOLOAD HELPER FILES ------------------ //
 ################################################################
@@ -69,12 +65,12 @@ Response::register();
  * Register All Functions, Filters, Constants etc
  * Make 'helpers' Path if Not Available
  */
-$helpers_path = APP_PATH . '/lf-helpers';
+$hooks_path = APP_PATH . '/lf-hooks';
 
 // Create Directory if Not Exists
-Directory::make($helpers_path);
+Directory::make($hooks_path);
 
 // Load Helpers
-$paths = Directory::scanRecursive($helpers_path, false, 'php');
+$paths = Directory::scanRecursive($hooks_path, false, 'php');
 array_map(function ($path) { require $path; }, $paths);
 ################################################################
