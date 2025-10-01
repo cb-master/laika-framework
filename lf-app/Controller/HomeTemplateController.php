@@ -23,13 +23,14 @@ class HomeTemplateController Extends Template
     /**
     * Args contains Request Object and Other Route Parameters
     */
-    public function index()
+    public function index(array $args)
     {
         // Args contains Request Object and other route parameters
         /**
          * Using Without Template Engine Compile View File
          */
         // Assign Data
+        $this->assign($args);
         $this->assign('title', 'Home');
         // Assign Data
         $this->assign('welcome', 'Welcome to Laika PHP MVC Framework!');

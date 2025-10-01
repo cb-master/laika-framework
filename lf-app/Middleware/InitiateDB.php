@@ -23,13 +23,19 @@ class InitiateDB
     // Initiate DB
     public function __construct(){
         try {
-            // Return if already connected
-            if(ConnectionManager::has('default')) return;
-            // Add Connection
-            ConnectionManager::add(Config::get('database', 'default'));
+
+            $configs = Config::get('database');
+            foreach($configs as $name => $config){
+                if(!ConnectionManager::has($name)) ConnectionManager::add($config, $name);
+            }
         } catch (\Throwable $th) {}
     }
 
     // Handle
-    public function handle($args){}
+    public function handle(\Closure $next, array ...$params)
+    {
+        // Start Code from Here
+        
+        return $next();
+    }
 }
