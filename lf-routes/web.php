@@ -17,4 +17,3 @@ use CBM\Core\App\Router;
 
 Router::get('/', 'HomeController@index')->name('home');
 Router::get('/template', 'HomeTemplateController@index')->name('home.template');
-Router::inspectAll();
