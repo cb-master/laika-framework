@@ -1,7 +1,9 @@
 # Laika PHP Framework
 
 Laika is a lightweight, fast, and flexible **MVC framework** for PHP, built with simplicity in mind.  
-It provides essential tools like routing, controllers, models, and a modular structure — without the overhead of large frameworks like Laravel or Symfony.  
+It provides essential tools like routing, controllers, models, and a modular structure — without the overhead of large frameworks like Laravel or Symfony.
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/cb-master/lmvc)
 
 ---
 
