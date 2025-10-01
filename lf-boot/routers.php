@@ -26,9 +26,9 @@ array_map(function ($route) { require_once $route; }, $routes);
 ################################################################
 // -------------------/- LOAD RESOURCE ---------------------- //
 ################################################################
-Router::get('/resource/{path:.+}', function($path) {
+Router::get('/resource/{path:.+}', function($param) {
     // Trim leading/trailing slashes
-    $path = trim($path, '/');
+    $param['path'] = trim($param['path'], '/');
 
     // Supported Content Types
     $types = [
@@ -44,7 +44,7 @@ Router::get('/resource/{path:.+}', function($path) {
     ];
 
     // Get Asset File Path
-    $file = realpath(APP_PATH."/lf-templates/{$path}") ?: APP_PATH . "/lf-assets/{$path}";
+    $file = realpath(APP_PATH."/lf-templates/{$param['path']}") ?: APP_PATH . "/lf-assets/{$param['path']}";
     if(!file_exists($file)){
         http_response_code(404);
         return;

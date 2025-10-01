@@ -15,18 +15,5 @@ defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
 use CBM\Core\App\Router;
 
-/**
- * Start Register Routers From Here
- * 
- * ###### Sample: #######
- * Router::get('/sample', 'SampleController@index');
- * 
- * ##### With Middleware #####
- * Router::get('/sample', 'SampleController@index', [CBM\App\Middleware\SampleMiddleware::class]);
- * 
- * ##### Post Request #####
- * Router::post('/sample', 'SampleController@index');
- */
-// Router::get('/', 'HomeController@index');
-Router::get('/', 'HomeController@index')->middleware(CBM\App\Middleware\InitiateDB::class);
-Router::get('/template', 'HomeTemplateController@index')->middleware(CBM\App\Middleware\InitiateDB::class);
+Router::get('/', 'HomeController@index')->name('home');
+Router::get('/template', 'HomeTemplateController@index')->name('home.template');
