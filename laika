@@ -10,18 +10,19 @@
  */
 
 // Define The Base Path
-define('BASE_PATH', __DIR__);
+define('APP_PATH', __DIR__);
 
 // Use Console
 use CBM\Core\Console\Kernel;
 
-if(strtolower(PHP_SAPI) !== 'cli'){
-    echo 'Require Terminal To Run Laika CLI!';
-    die();
-}
+// Check LAIKA Working From CLI
+if(strtolower(PHP_SAPI) !== 'cli') die("WARNING: Require Terminal To Run Laika CLI!\n");
 
-require_once(BASE_PATH.'/lf-boot/loader.php');
-// require_once(BASE_PATH.'/vendor/autoload.php');
+$app_file = APP_PATH.'/lf-boot/app.php';
+
+// Check LAIKA is in Right Directory
+if(!is_file($app_file)) die("WARNING: Laika is in Wrong Path!\n");
+require_once(APP_PATH.'/lf-boot/app.php');
 
 
 $kernel = new Kernel($argv);
