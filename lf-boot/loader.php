@@ -10,9 +10,8 @@
 
 declare(strict_types=1);
 
-
-// Define App Path
-defined('APP_PATH') || define('APP_PATH', realpath(__DIR__.'/../'));
+// Deny Direct Access
+defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
 use CBM\Core\{Directory, Config, ErrorHandler, Http\Response};
 

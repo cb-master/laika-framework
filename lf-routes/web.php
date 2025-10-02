@@ -16,4 +16,3 @@ defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 use CBM\Core\App\Router;
 
 Router::get('/', 'HomeController@index')->name('home');
-Router::get('/template', 'HomeTemplateController@index')->name('home.template');
