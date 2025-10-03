@@ -45,7 +45,7 @@ Router::get('/resource/{path:.+}', function($param) {
 
     // Get Asset File Path
     $file = realpath(APP_PATH."/lf-templates/{$param['path']}") ?: APP_PATH . "/lf-assets/{$param['path']}";
-    if(!file_exists($file)){
+    if(!is_file($file)){
         http_response_code(404);
         return;
     }
