@@ -13,7 +13,7 @@ declare(strict_types=1);
 // Deny Direct Access
 defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-use CBM\Core\App\Router;
+use CBM\Core\App\Http;
 
 // Start Register API Routers From Here
 // ###### Sample: #######
@@ -23,12 +23,12 @@ use CBM\Core\App\Router;
 // ##### Post Request #####
 // Router::post('/sample', 'SampleController@index');
 
-Router::get('/status', function() {
+Http::get('/status', function() {
     header('Content-Type: application/json');
     echo json_encode(['status' => 'API is Working With Get Method']);
 });
 
-Router::put('/status', function() {
+Http::put('/status', function() {
     header('Content-Type: application/json');
     echo json_encode(['status' => 'API is Working With Put Method']);
 });
