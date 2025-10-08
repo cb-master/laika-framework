@@ -15,5 +15,8 @@ defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
 return [    
     // Debug
-    'debug' => true
+    'debug' => true,
+
+    // Start Time
+    'start.time'    =>  time(),
 ];

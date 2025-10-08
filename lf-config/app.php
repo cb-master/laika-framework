@@ -24,11 +24,5 @@ return [
     'url.provider'  => 'https://laikaframework.com',
 
     // Docs_url
-    'url.doc'       => 'https://docs.laikaframework.com',
-
-    // Start Time
-    'start.time'    =>  time(),
-    
-    // Debug
-    'debug' => true
+    'url.doc'       => 'https://docs.laikaframework.com'
 ];
