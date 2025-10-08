@@ -25,6 +25,9 @@ return [
 
     // Docs_url
     'url.doc'       => 'https://docs.laikaframework.com',
+
+    // Start Time
+    'start.time'    =>  time(),
     
     // Debug
     'debug' => true
