@@ -13,16 +13,10 @@ declare(strict_types=1);
 // Deny Direct Access
 defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-return [
-    // Provider
-    'provider'      => 'Laika Framework',
+return [    
+    // Debug
+    'debug' => true,
 
-    // Version
-    'version'       => '2.0.0',
-
-    // Provider_url
-    'url.provider'  => 'https://laikaframework.com',
-
-    // Docs_url
-    'url.doc'       => 'https://docs.laikaframework.com'
+    // Start Time
+    'start.time'    =>  time(),
 ];

@@ -15,13 +15,13 @@ defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
 use CBM\Core\App\Http;
 
-// Start Register API Routers From Here
+// Start Register API Http From Here
 // ###### Sample: #######
-// Router::get('/sample', 'SampleController@index');
+// Http::get('/sample', 'SampleController@index');
 // ##### With Middleware #####
-// Router::get('/sample', 'SampleController@index', [CBM\App\Middleware\SampleMiddleware::class]);
+// Http::get('/sample', 'SampleController@index', [CBM\App\Middleware\SampleMiddleware::class]);
 // ##### Post Request #####
-// Router::post('/sample', 'SampleController@index');
+// Http::post('/sample', 'SampleController@index');
 
 Http::get('/status', function() {
     header('Content-Type: application/json');
