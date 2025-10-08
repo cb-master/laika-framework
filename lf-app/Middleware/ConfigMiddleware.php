@@ -45,20 +45,17 @@ class ConfigMiddleware
      * @param \Closure $next. $next will bypass to controller if called
      * @param ...$params Dynamic Parameters
      */
-    public function handle(\Closure $next, mixed ...$params)
+    public function handle(\Closure $next, array $params)
     {
         // Start Code From Here....
 
-
-        return $next();
+        return $next($params);
     }
 
-    public function terminate(string $response, ...$params): string
+    public function terminate(string $response, array $params): string
     {
         // After controller
         // Write Code From Here ......
-
-        
 
         // You can modify the response if needed
         return $response;
