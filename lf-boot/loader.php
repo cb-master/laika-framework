@@ -31,6 +31,13 @@ ErrorHandler::register();
 ################################################################
 
 
+################################################################
+// ------------------- REGISTER TIMEZONE -------------------- //
+################################################################
+// Register Default Time Zone
+date_default_timezone_set(option('time.zone', 'Europe/London'));
+################################################################
+
 
 ################################################################
 // ---------------------- SECRET KEY ------------------------ //
@@ -38,11 +45,11 @@ ErrorHandler::register();
 /**
  * Create Secret Config File if Not Exist
  */
-if(!Config::has('secret')) Config::create('secret', ['key'=>bin2hex(random_bytes(32))]);
+if(!Config::has('secret')) Config::create('secret', ['key'=>bin2hex(random_bytes(64))]);
 /**
  * Create Secret Key Value Not Exist
  */
-if(!Config::has('secret', 'key')) Config::set('secret', 'key', bin2hex(random_bytes(32)));
+if(!Config::has('secret', 'key')) Config::set('secret', 'key', bin2hex(random_bytes(64)));
 ################################################################
 
 
