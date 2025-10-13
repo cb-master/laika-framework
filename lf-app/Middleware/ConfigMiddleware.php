@@ -27,7 +27,7 @@ class ConfigMiddleware
         // Set Database Connection
         try {
 
-            $configs = Config::get('database');
+            $configs = Config::get('database', default:[]);
             foreach($configs as $name => $config){
                 if(!ConnectionManager::has($name)) ConnectionManager::add($config, $name);
             }
