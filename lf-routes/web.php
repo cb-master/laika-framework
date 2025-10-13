@@ -13,6 +13,6 @@ declare(strict_types=1);
 // Deny Direct Access
 defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-use CBM\Core\App\Http;
+use CBM\Core\App\Router;
 
-Http::get('/', 'HomeController@index')->middleware('ConfigMiddleware')->name('home');
+Router::get('/', 'HomeController@index')->middleware('ConfigMiddleware')->name('home');
