@@ -13,7 +13,7 @@ declare(strict_types=1);
 // Deny Direct Access
 defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-use CBM\Core\{Directory, App\Http};
+use CBM\Core\{Directory, App\Router};
 
 ################################################################
 // -------------------- LOAD ROUTES ------------------------- //
@@ -26,7 +26,7 @@ array_map(function ($route) { require_once $route; }, $routes);
 ################################################################
 // -------------------/- LOAD RESOURCE ---------------------- //
 ################################################################
-Http::get('/resource/{path:.+}', function($param) {
+Router::get('/resource/{path:.+}', function($param) {
     // Trim leading/trailing slashes
     $param['path'] = trim($param['path'], '/');
 
