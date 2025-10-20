@@ -11,7 +11,7 @@
 declare(strict_types=1);
 
 // Define App Path
-defined('APP_PATH') || define('APP_PATH', realpath(__DIR__.'/../'));
+defined('APP_PATH') || define('APP_PATH', dirname(__DIR__));
 
 // ################################################################
 // --------------------- LOAD BOOT LOADER ---------------------- //

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Laika PHP MVC Framework
  * Author: Showket Ahmed
@@ -11,30 +12,29 @@
 declare(strict_types=1);
 
 // Namespace
-namespace CBM\App\Controller;
+namespace Laika\App\Controller;
 
 // Deny Direct Access
-defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
+defined('APP_PATH') || http_response_code(403) . die('403 Direct Access Denied!');
 
-use CBM\Core\App\Template;
+use Laika\Core\App\Template;
 
-class HomeController Extends Template
+class HomeController extends Template
 {
     /**
-    * Args contains Request Object and Other Route Parameters
-    */
-    public function index(...$params)
+     * Args contains Request Object and Other Route Parameters
+     */
+    public function index()
     {
         // Args contains Request Object and other route parameters
         /**
          * Using Without Template Engine Compile View File
          */
         // Assign Data
-        $this->assign($params);
         $this->assign('title', 'Home');
         // Assign Data
         $this->assign('welcome', 'Welcome to Laika PHP MVC Framework!');
-        
+
         // load View File
         $this->view('home');
     }

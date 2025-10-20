@@ -59,7 +59,7 @@
     <div class="container">
         <h1>{{welcome}}</h1>
         <p>Your lightweight MVC PHP framework for fast and clean development.</p>
-        <a class="docs-link" href="{{app_info['url.doc']}}">Read the Docs</a>
+        <a class="docs-link" href="{{app_info['documentation']}}">Read the Docs</a>
         <div class="version">Framework version: {{app_info['version']}}</div>
     </div>
 </body>

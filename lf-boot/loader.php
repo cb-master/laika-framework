@@ -13,7 +13,7 @@ declare(strict_types=1);
 // Deny Direct Access
 defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-use CBM\Core\{Directory, Config, ErrorHandler, Http\Response};
+use Laika\Core\{Directory, Config, ErrorHandler, Http\Response};
 
 ################################################################
 // ----------------------- AUTOLOADER ----------------------- //
@@ -45,11 +45,15 @@ date_default_timezone_set(option('time.zone', 'Europe/London'));
 /**
  * Create Secret Config File if Not Exist
  */
-if(!Config::has('secret')) Config::create('secret', ['key'=>bin2hex(random_bytes(64))]);
+if(!Config::has('secret')) {
+    Config::create('secret', ['key'=>bin2hex(random_bytes(64))]);
+}
 /**
  * Create Secret Key Value Not Exist
  */
-if(!Config::has('secret', 'key')) Config::set('secret', 'key', bin2hex(random_bytes(64)));
+if(!Config::has('secret', 'key')) {
+    Config::set('secret', 'key', bin2hex(random_bytes(64)));
+}
 ################################################################
 
 

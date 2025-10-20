@@ -13,7 +13,7 @@ declare(strict_types=1);
 // Deny Direct Access
 defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-use CBM\Core\{Directory, App\Router};
+use Laika\Core\{Directory, App\Router};
 
 ################################################################
 // -------------------- LOAD ROUTES ------------------------- //
@@ -26,9 +26,9 @@ array_map(function ($route) { require_once $route; }, $routes);
 ################################################################
 // -------------------/- LOAD RESOURCE ---------------------- //
 ################################################################
-Router::get('/resource/{path:.+}', function($param) {
+Router::get('/resource/{path:.+}', function($path) {
     // Trim leading/trailing slashes
-    $param['path'] = trim($param['path'], '/');
+    $path = trim($path, '/');
 
     // Supported Content Types
     $types = [
@@ -44,7 +44,7 @@ Router::get('/resource/{path:.+}', function($param) {
     ];
 
     // Get Asset File Path
-    $file = realpath(APP_PATH."/lf-templates/{$param['path']}") ?: APP_PATH . "/lf-assets/{$param['path']}";
+    $file = realpath(APP_PATH."/lf-templates/{$path}") ?: APP_PATH . "/lf-assets/{$path}";
     if(!is_file($file)){
         http_response_code(404);
         return;
