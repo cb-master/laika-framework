@@ -1,5 +1,6 @@
 #!/usr/bin/env php
 <?php
+
 /**
  * Laika PHP MVC Framework
  * Author: Showket Ahmed
@@ -13,15 +14,19 @@
 define('APP_PATH', __DIR__);
 
 // Use Console
-use CBM\Core\Console\Kernel;
+use Laika\Core\Console\Kernel;
 
 // Check LAIKA Working From CLI
-if(strtolower(PHP_SAPI) !== 'cli') die("WARNING: Require Terminal To Run Laika CLI!\n");
+if (strtolower(PHP_SAPI) !== 'cli') {
+    die("WARNING: Require Terminal To Run Laika CLI!\n");
+}
 
 $app_file = APP_PATH.'/lf-boot/app.php';
 
 // Check LAIKA is in Right Directory
-if(!is_file($app_file)) die("WARNING: Laika is in Wrong Path!\n");
+if (!is_file($app_file)) {
+    die("WARNING: Laika is in Wrong Path!\n");
+}
 require_once(APP_PATH.'/lf-boot/app.php');
 
 

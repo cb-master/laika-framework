@@ -15,14 +15,14 @@ defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
 return [
     // Provider
-    'provider'      => 'Laika Framework',
+    'name'          =>  'Laika Framework',
 
     // Version
-    'version'       => '2.0.0',
+    'version'       =>  '2.0.0',
 
     // Provider_url
-    'url.provider'  => 'https://laikaframework.com',
+    'url'           =>  'https://laikaframework.com',
 
     // Docs_url
-    'url.doc'       => 'https://docs.laikaframework.com'
+    'documentation' =>  'https://docs.laikaframework.com'
 ];

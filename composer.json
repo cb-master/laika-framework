@@ -1,11 +1,11 @@
 {
-    "name": "cb-master/lmvc",
+    "name": "cb-master/laika-framework",
     "description": "Laika PHP Framework",
     "type": "project",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "CBM\\App\\": "lf-app/"
+            "Laika\\App\\": "lf-app/"
         }
     },
     "authors": [
@@ -18,9 +18,9 @@
             "email": "riyadhtayf@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=8.1",
-        "cb-master/lmvc-core": "dev-beta"
+        "cb-master/laika-core": "^1"
     }
 }
