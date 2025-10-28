@@ -33,6 +33,8 @@ class ConfigMiddleware
             foreach ($configs as $name => $config) {
                 ConnectionManager::add($config, $name);
             }
+            // Set Date Time
+            date_default_timezone_set(option('time.zone', 'Europe/London'));
         } catch (\Throwable $th) {
             if (option('debug')) {
                 throw new RuntimeException($th->getMessage(), $th->getCode(), $th);
