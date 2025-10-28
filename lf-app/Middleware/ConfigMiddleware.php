@@ -19,6 +19,8 @@ defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 use Laika\Model\ConnectionManager;
 use Laika\Session\SessionManager;
 use Laika\Core\Config;
+use RuntimeException;
+use Closure;
 
 class ConfigMiddleware
 {
@@ -31,33 +33,34 @@ class ConfigMiddleware
             foreach ($configs as $name => $config) {
                 ConnectionManager::add($config, $name);
             }
-        } catch (\Throwable $th) {}
-
+        } catch (\Throwable $th) {
+            if (option('debug')) {
+                throw new RuntimeException($th->getMessage(), $th->getCode(), $th);
+            }
+        }
         // Start Session Manager
         $config = ConnectionManager::has('default') ? ConnectionManager::get() : [];
         SessionManager::config($config);
-
-        // Set Language File Name
-        apply_filter('app.language.load');
     }
 
     /**
-     * @param \Closure $next. $next will bypass to controller if called
+     * @param Closure $next. $next will bypass to controller if called
      * @param ...$params Dynamic Parameters
      */
-    public function handle(\Closure $next, array $params)
+    public function handle(Closure $next, array $params)
     {
-        // Start Code From Here....
+        // Load Language
+        isset($params['type']) ? apply_filter('app.language.load', $params['type']) : apply_filter('app.language.load');
 
         return $next($params);
     }
 
-    public function terminate(string $response, array $params): string
+    public function terminate(string $response, Closure $next, array $params): string
     {
         // After controller
         // Write Code From Here ......
 
         // You can modify the response if needed
-        return $response;
+        return $next($response);
     }
 }
