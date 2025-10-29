@@ -47,12 +47,12 @@ class ConfigMiddleware
 
     /**
      * @param Closure $next. $next will bypass to controller if called
-     * @param ...$params Dynamic Parameters
+     * @param $params Dynamic Parameters
      */
     public function handle(Closure $next, array $params)
     {
-        // Load Language
-        isset($params['type']) ? apply_filter('app.language.load', $params['type']) : apply_filter('app.language.load');
+        // Load Requireds
+        $this->loadRequires($params);
 
         return $next($params);
     }
@@ -64,5 +64,12 @@ class ConfigMiddleware
 
         // You can modify the response if needed
         return $next($response);
+    }
+
+    // Load Requireds
+    private function loadRequires(array $params)
+    {
+        // Load Language
+        isset($params['type']) ? apply_filter('app.language.load', $params['type']) : apply_filter('app.language.load');
     }
 }
