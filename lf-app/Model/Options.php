@@ -10,18 +10,18 @@
 
 declare(strict_types=1);
 
-namespace CBM\App\Model;
+namespace Laika\App\Model;
 
 // Deny Direct Access
 defined('APP_PATH') || http_response_code(403).die('403 Direct Access Denied!');
 
-use CBM\Core\App\Model;
+use Laika\Core\App\Model;
 
 class Options Extends Model
 {
     // Table
-    protected string $table = 'options';
+    public string $table = 'options';
 
     // ID
-    protected string $id = 'opt_id';
+    public string $id = 'opt_id';
 }

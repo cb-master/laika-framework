@@ -36,6 +36,6 @@ class HomeController extends Template
         $this->assign('welcome', 'Welcome to Laika PHP MVC Framework!');
 
         // load View File
-        $this->view('home');
+        return $this->view('home');
     }
 }
