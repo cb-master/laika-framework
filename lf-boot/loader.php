@@ -54,7 +54,7 @@ if(!Config::has('secret', 'key')) {
 /**
  * Register Default Header
  */
-Response::register();
+Response::instance()->register();
 ################################################################
 
 
