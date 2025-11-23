@@ -3,5 +3,6 @@ lf-logs/
 lf-cache/
 lf-storage/
 lf-config/secret.php
+lf-templates/hooks.php
 composer.phar
 composer.lock
