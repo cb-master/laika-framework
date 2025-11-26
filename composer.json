@@ -1,6 +1,6 @@
 {
     "name": "laikait/laika-framework",
-    "description": "Laika PHP Framework",
+    "description": "Laika MMC Framework",
     "type": "project",
     "license": "MIT",
     "autoload": {
@@ -10,11 +10,11 @@
     },
     "authors": [
         {
-            "name": "cb-master",
+            "name": "Laika IT",
             "email": "strblackhawk@gmail.com"
         },
         {
-            "name": "showket-ahmed",
+            "name": "Showket Ahmed",
             "email": "riyadhtayf@gmail.com"
         }
     ],
