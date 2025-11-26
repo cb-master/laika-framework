@@ -1,4 +1,4 @@
-# Laika PHP Framework
+# Laika MMC Framework
 
 Laika is a lightweight, fast, and flexible **MMC framework** (Model-Middleware-Controller) for PHP, built with simplicity in mind.  
 It provides essential tools like routing, controllers, models, and a modular structure — without the overhead of large frameworks like Laravel or Symfony.

@@ -1,6 +1,6 @@
 {
     "name": "laikait/laika-framework",
-    "description": "Laika PHP Framework",
+    "description": "Laika MMC Framework",
     "type": "project",
     "license": "MIT",
     "autoload": {
