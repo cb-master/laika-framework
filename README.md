@@ -1,6 +1,6 @@
 # Laika PHP Framework
 
-Laika is a lightweight, fast, and flexible **MVC framework** for PHP, built with simplicity in mind.  
+Laika is a lightweight, fast, and flexible **MMC framework** (Model-Middleware-Controller) for PHP, built with simplicity in mind.  
 It provides essential tools like routing, controllers, models, and a modular structure — without the overhead of large frameworks like Laravel or Symfony.
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/laikait/laika-framework)
@@ -9,9 +9,9 @@ It provides essential tools like routing, controllers, models, and a modular str
 
 ## ✨ Features
 
-- 🚀 Lightweight MVC structure  
+- 🚀 Lightweight MMC structure  
 - 🛠️ Simple and clean **Router** (with support for route groups, parameters, and controller actions)  
-- 🗂️ Organized **Controller** and **Model** classes  
+- 🗂️ Organized **Model**, **Middleware** & **Controller** classes  
 - 🔐 Secure by default (prevents direct file access)  
 - 📦 Composer autoloading with PSR-4  
 - 🧩 Easy to extend with custom modules  
