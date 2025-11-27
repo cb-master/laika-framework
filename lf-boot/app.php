@@ -29,6 +29,9 @@ require_once APP_PATH . '/vendor/autoload.php';
  * Example: 'resource' for '/resource/{name}'
  */
 Url::ResourceSlug('resource'); // Change 'resource' to your desired slug
-// Load URL Routes
+
+/**
+ * Load URL Routes from routes directory
+ */
 Url::LoadRoutes();
 ################################################################
