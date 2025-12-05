@@ -19,7 +19,7 @@ return [
     'name'          =>  'Laika Framework',
 
     // Version
-    'version'       =>  '2.3.3',
+    'version'       =>  '2.3.5',
 
     // Provider_url
     'url'           =>  'https://laikaframework.com',
