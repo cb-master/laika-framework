@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Laika PHP MVC Framework
  * Author: Showket Ahmed
@@ -13,7 +14,7 @@ declare(strict_types=1);
 // Define App Path
 defined('APP_PATH') || define('APP_PATH', dirname(__DIR__));
 
-use Laika\Core\App\Route\Url;
+use Laika\Core\App\Route\Asset;
 
 ################################################################
 // ----------------------- AUTOLOADER ----------------------- //
@@ -22,16 +23,22 @@ require_once APP_PATH . '/vendor/autoload.php';
 // ---------------------------------------------------------- //
 
 ################################################################
+// ------------------- LOAD CONSTANTS ----------------------- //
+################################################################
+require_once APP_PATH . '/lf-boot/const.php';
+
+################################################################
 // ----------------- RESOURCE REGISTER ---------------------- //
 ################################################################
 /**
- * Add Resource URL Path Name. URL Example: https://yoursite.com/resource/{name}
- * Example: 'resource' for '/resource/{name}'
+ * Add Resource URL Path Name. URL Example: https://yoursite.com/app-src/{name}
+ * Example:
+ *  App Resource '/app-src/{name}'
+ *  Template Resource '/template-src/{name}'
+ * To change App/Template Resource Slug Use Asset Class
+ * Example:
+ *  Asset::$app = 'default-src';
+ *  Asset::$template = 'tpl-src';
  */
-Url::ResourceSlug('resource'); // Change 'resource' to your desired slug
 
-/**
- * Load URL Routes from routes directory
- */
-Url::LoadRoutes();
 ################################################################
