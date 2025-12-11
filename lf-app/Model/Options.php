@@ -37,7 +37,7 @@ class Options Extends Model
     public string $default = 'default_option';
 
     /**
-     * Make Table if Doesnot Exists
+     * Make Table if Doesn't Exists
      * @return void
      */
     public function migrate()
