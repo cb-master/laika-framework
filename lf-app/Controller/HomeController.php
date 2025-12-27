@@ -19,23 +19,21 @@ defined('APP_PATH') || http_response_code(403) . die('403 Direct Access Denied!'
 
 use Laika\Core\App\Template;
 
-class HomeController extends Template
+class HomeController
 {
     /**
      * Args contains Request Object and Other Route Parameters
      */
     public function index()
     {
-        // Args contains Request Object and other route parameters
-        /**
-         * Using Without Template Engine Compile View File
-         */
+        // Template Object
+        $tpl = new Template();
         // Assign Data
-        $this->assign('title', 'Home');
+        $tpl->assign('title', 'Home');
         // Assign Data
-        $this->assign('welcome', 'Welcome to Laika PHP MVC Framework!');
+        $tpl->assign('welcome', 'WELCOME!');
 
         // load View File
-        return $this->view('home');
+        return $tpl->view('home');
     }
 }

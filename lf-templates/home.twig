@@ -11,11 +11,14 @@
 </head>
 <body>
     <div class="container">
+        <img class="logo" src={{ 'app.asset' | hook('img/logo.png') }}>
         <h1>{{welcome}}</h1>
-        <p>Your lightweight MVC PHP framework for fast and clean development.</p>
+        <p>Your Lightweight MMC Framework for Fast and Clean Development.</p>
         <a class="docs-link" href="{{ app.documentation }}">Read the Docs</a>
-        <div class="version">Framework version: {{ app.version }}</div>
-        <div class="copyright">&copy; : {{ '' | date('Y') }}</div>
+        <div class="footer">
+            <div class="version">Framework version: {{ app.version }}</div>
+            <div class="copyright">&copy; : {{ '' | date('Y') }}</div>
+        <div>
     </div>
 </body>
 </html>
