@@ -14,20 +14,29 @@ body {
     text-align: center;
     padding: 2rem;
 }
+.container .logo{
+    width: 200px;
+    height: 200px;
+}
 
 h1 {
     font-size: 3rem;
     color: #0b5394;
+    margin: 0 0 1rem 0;
+    line-height: 1;
 }
 
 p {
     font-size: 1.2rem;
-    margin-top: 1rem;
+    margin: 0;
     color: #555;
 }
 
-.copyright,.version {
-    margin-top: 2rem;
+.footer {
+    margin-top: 1rem;
+}
+.footer .copyright, .footer .version {
+    margin-top: 0.5rem;
     font-size: 0.9rem;
     color: #999;
 }
