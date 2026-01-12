@@ -19,4 +19,7 @@ return [
 
     // Start Time
     'start.time'    =>  time(),
+
+    // Csrf Lifetime
+    'csrf.lifetime' => 300,
 ];
